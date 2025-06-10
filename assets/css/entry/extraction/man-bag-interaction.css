@@ -1,0 +1,429 @@
+/* 
+ * CSS Animation for Man and Bag Interaction
+ * This file contains animations for the man to approach the bag and remove items
+ * when the Total Qty decreases
+ */
+
+/* Animation variables */
+:root {
+  --animation-duration: 2s;
+  --animation-distance: 60px;
+  --bag-position-x: 180px;
+  --original-man-position: 0px;
+  --step-duration: 0.3s;
+}
+
+/* Man movement animation - now with proper steps */
+@keyframes walkToBag {
+  0% {
+    transform: translateX(var(--original-man-position)) translateY(0px);
+  }
+  10% {
+    transform: translateX(calc(var(--bag-position-x) * 0.2 - var(--animation-distance))) translateY(-2px);
+  }
+  20% {
+    transform: translateX(calc(var(--bag-position-x) * 0.4 - var(--animation-distance))) translateY(0px);
+  }
+  30% {
+    transform: translateX(calc(var(--bag-position-x) * 0.6 - var(--animation-distance))) translateY(-2px);
+  }
+  40% {
+    transform: translateX(calc(var(--bag-position-x) * 0.8 - var(--animation-distance))) translateY(0px);
+  }
+  45% {
+    transform: translateX(calc(var(--bag-position-x) - var(--animation-distance))) translateY(0px);
+  }
+  50% {
+    transform: translateX(calc(var(--bag-position-x) - var(--animation-distance))) translateY(0px);
+  }
+  60% {
+    transform: translateX(calc(var(--bag-position-x) * 0.8 - var(--animation-distance))) translateY(-2px);
+  }
+  70% {
+    transform: translateX(calc(var(--bag-position-x) * 0.6 - var(--animation-distance))) translateY(0px);
+  }
+  80% {
+    transform: translateX(calc(var(--bag-position-x) * 0.4 - var(--animation-distance))) translateY(-2px);
+  }
+  90% {
+    transform: translateX(calc(var(--bag-position-x) * 0.2 - var(--animation-distance))) translateY(0px);
+  }
+  100% {
+    transform: translateX(var(--original-man-position)) translateY(0px);
+  }
+}
+
+/* Arm reaching animation - now using right arm */
+@keyframes reachIntoBag {
+  0% {
+    transform: rotate(-5deg);
+  }
+  40% {
+    transform: rotate(-5deg);
+  }
+  50% {
+    transform: rotate(-45deg);
+  }
+  60% {
+    transform: rotate(-45deg);
+  }
+  100% {
+    transform: rotate(-5deg);
+  }
+}
+
+/* Hand grabbing animation - adjusted for right hand */
+@keyframes grabItem {
+  0% {
+    transform: rotate(5deg) scale(1);
+  }
+  40% {
+    transform: rotate(5deg) scale(1);
+  }
+  50% {
+    transform: rotate(-10deg) scale(0.9);
+  }
+  60% {
+    transform: rotate(-10deg) scale(0.9);
+  }
+  100% {
+    transform: rotate(5deg) scale(1);
+  }
+}
+
+/* Improved leg movement for realistic step-by-step walking */
+@keyframes legWalkLeft {
+  0% { transform: rotate(0deg) translateY(0); }
+  10% { transform: rotate(20deg) translateY(-2px); } /* Lift and forward */
+  20% { transform: rotate(10deg) translateY(-1px); } /* Coming down */
+  30% { transform: rotate(0deg) translateY(0); } /* Plant foot */
+  40% { transform: rotate(-10deg) translateY(0); } /* Push back */
+  50% { transform: rotate(-5deg) translateY(0); } /* Back position while right moves */
+  60% { transform: rotate(0deg) translateY(0); } /* Neutral before next step */
+  70% { transform: rotate(20deg) translateY(-2px); } /* Second step forward */
+  80% { transform: rotate(10deg) translateY(-1px); } /* Coming down again */
+  90% { transform: rotate(0deg) translateY(0); } /* Plant foot again */
+  100% { transform: rotate(0deg) translateY(0); } /* Back to standing */
+}
+
+@keyframes legWalkRight {
+  0% { transform: rotate(0deg) translateY(0); }
+  10% { transform: rotate(-5deg) translateY(0); } /* Back position while left moves */
+  20% { transform: rotate(-10deg) translateY(0); } /* Push back */
+  30% { transform: rotate(0deg) translateY(0); } /* Neutral before step */
+  40% { transform: rotate(20deg) translateY(-2px); } /* Lift and forward */
+  50% { transform: rotate(10deg) translateY(-1px); } /* Coming down */
+  60% { transform: rotate(0deg) translateY(0); } /* Plant foot */
+  70% { transform: rotate(-5deg) translateY(0); } /* Back position again */
+  80% { transform: rotate(-10deg) translateY(0); } /* Push back */
+  90% { transform: rotate(-5deg) translateY(0); } /* Returning */
+  100% { transform: rotate(0deg) translateY(0); } /* Back to standing */
+}
+
+/* Foot animation to match step-by-step leg movement */
+@keyframes footFlexLeft {
+  0% { transform: translateX(-50%) rotate(0deg); }
+  10% { transform: translateX(-50%) rotate(-15deg); } /* Heel lift */
+  20% { transform: translateX(-50%) rotate(-5deg); } /* Midstep */
+  30% { transform: translateX(-50%) rotate(0deg); } /* Foot plant */
+  40%, 60% { transform: translateX(-50%) rotate(5deg); } /* Push off */
+  70% { transform: translateX(-50%) rotate(-15deg); } /* Heel lift for second step */
+  80% { transform: translateX(-50%) rotate(-5deg); } /* Midstep */
+  90%, 100% { transform: translateX(-50%) rotate(0deg); } /* Foot plant */
+}
+
+@keyframes footFlexRight {
+  0% { transform: translateX(-50%) rotate(0deg); }
+  10%, 20% { transform: translateX(-50%) rotate(5deg); } /* Push off */
+  30% { transform: translateX(-50%) rotate(0deg); } /* Neutral */
+  40% { transform: translateX(-50%) rotate(-15deg); } /* Heel lift */
+  50% { transform: translateX(-50%) rotate(-5deg); } /* Midstep */
+  60% { transform: translateX(-50%) rotate(0deg); } /* Foot plant */
+  70%, 80% { transform: translateX(-50%) rotate(5deg); } /* Push off */
+  90% { transform: translateX(-50%) rotate(2deg); } /* Returning */
+  100% { transform: translateX(-50%) rotate(0deg); } /* Back to standing */
+}
+
+/* Knee bend animation to enhance step realism */
+@keyframes kneeFlexLeft {
+  0% { transform: scale(1); }
+  10% { transform: scale(0.9); } /* Bend during lift */
+  30% { transform: scale(1); } /* Straight at plant */
+  40%, 60% { transform: scale(1); } /* Remain straight during push */
+  70% { transform: scale(0.9); } /* Bend for second step */
+  90%, 100% { transform: scale(1); } /* Straight again */
+}
+
+@keyframes kneeFlexRight {
+  0% { transform: scale(1); }
+  10%, 30% { transform: scale(1); } /* Remain straight */
+  40% { transform: scale(0.9); } /* Bend during lift */
+  60% { transform: scale(1); } /* Straight at plant */
+  70%, 90% { transform: scale(1); } /* Remain straight */
+  100% { transform: scale(1); } /* Back to standing */
+}
+
+/* Ankle flex for enhanced step realism */
+@keyframes ankleFlexLeft {
+  0% { transform: scale(1); }
+  10% { transform: scale(1.1); } /* Extend during lift */
+  30% { transform: scale(1); } /* Normal at plant */
+  70% { transform: scale(1.1); } /* Extend during second lift */
+  90%, 100% { transform: scale(1); } /* Back to normal */
+}
+
+@keyframes ankleFlexRight {
+  0% { transform: scale(1); }
+  10%, 30% { transform: scale(1); } /* Normal */
+  40% { transform: scale(1.1); } /* Extend during lift */
+  60% { transform: scale(1); } /* Normal at plant */
+  100% { transform: scale(1); } /* Back to normal */
+}
+
+/* Enhanced bone and joint animations for extreme realism */
+
+/* Thigh bone movement during walking */
+@keyframes femurWalkLeft {
+  0% { transform: rotate(0deg) translateX(0); }
+  10% { transform: rotate(15deg) translateX(0.5px); } /* Forward swing */
+  30% { transform: rotate(-5deg) translateX(-0.5px); } /* Back position */
+  70% { transform: rotate(15deg) translateX(0.5px); } /* Second step */
+  90% { transform: rotate(-5deg) translateX(-0.5px); } /* Back again */
+  100% { transform: rotate(0deg) translateX(0); }
+}
+
+@keyframes femurWalkRight {
+  0% { transform: rotate(0deg) translateX(0); }
+  10% { transform: rotate(-5deg) translateX(-0.5px); } /* Back position */
+  40% { transform: rotate(15deg) translateX(0.5px); } /* Forward swing */
+  60% { transform: rotate(-5deg) translateX(-0.5px); } /* Back position */
+  90% { transform: rotate(0deg) translateX(0); }
+  100% { transform: rotate(0deg) translateX(0); }
+}
+
+/* Patella (kneecap) movement */
+@keyframes patellaFlexLeft {
+  0%, 30%, 60%, 100% { transform: translateY(0) scale(1); }
+  10%, 70% { transform: translateY(-1px) scale(1.1); } /* Extends during leg lift */
+  20%, 80% { transform: translateY(-0.5px) scale(1.05); } /* Partial extension */
+}
+
+@keyframes patellaFlexRight {
+  0%, 10%, 60%, 90%, 100% { transform: translateY(0) scale(1); }
+  40% { transform: translateY(-1px) scale(1.1); } /* Extends during leg lift */
+  50% { transform: translateY(-0.5px) scale(1.05); } /* Partial extension */
+}
+
+/* Knee ligament stretching */
+@keyframes ligamentStretchLeft {
+  0%, 30%, 60%, 100% { transform: scaleY(1); }
+  10%, 70% { transform: scaleY(1.2); } /* Stretches during leg lift */
+  20%, 80% { transform: scaleY(1.1); } /* Partial stretch */
+}
+
+@keyframes ligamentStretchRight {
+  0%, 10%, 60%, 90%, 100% { transform: scaleY(1); }
+  40% { transform: scaleY(1.2); } /* Stretches during leg lift */
+  50% { transform: scaleY(1.1); } /* Partial stretch */
+}
+
+/* Shin bone movement */
+@keyframes tibiaWalkLeft {
+  0% { transform: rotate(0deg); }
+  10% { transform: rotate(5deg); } /* Slight adjustment during step */
+  30% { transform: rotate(-2deg); } /* Back position */
+  70% { transform: rotate(5deg); } /* Second step */
+  90% { transform: rotate(-2deg); } /* Back position */
+  100% { transform: rotate(0deg); }
+}
+
+@keyframes tibiaWalkRight {
+  0% { transform: rotate(0deg); }
+  10% { transform: rotate(-2deg); } /* Back position */
+  40% { transform: rotate(5deg); } /* Forward adjustment */
+  60% { transform: rotate(-2deg); } /* Back position */
+  100% { transform: rotate(0deg); }
+}
+
+/* Calf muscle flex during walking */
+@keyframes calfMuscleFlex {
+  0%, 100% { transform: scale(1); opacity: 0.15; }
+  10%, 40%, 70% { transform: scale(1.05); opacity: 0.25; } /* Flexes during push-off */
+  30%, 60%, 90% { transform: scale(0.95); opacity: 0.15; } /* Relaxes during forward swing */
+}
+
+/* Applied animation classes - changed to right arm */
+.css-man.extracting {
+  animation: walkToBag var(--animation-duration) ease-in-out;
+}
+
+.css-man.extracting .arm-right {
+  animation: reachIntoBag var(--animation-duration) ease-in-out;
+}
+
+.css-man.extracting .hand-right {
+  animation: grabItem var(--animation-duration) ease-in-out;
+}
+
+.css-man.extracting .leg-left {
+  animation: legWalkLeft var(--animation-duration) ease-in-out;
+  transform-origin: top center;
+}
+
+.css-man.extracting .leg-right {
+  animation: legWalkRight var(--animation-duration) ease-in-out;
+  transform-origin: top center;
+}
+
+.css-man.extracting .foot-left .shoe {
+  animation: footFlexLeft var(--animation-duration) ease-in-out;
+}
+
+.css-man.extracting .foot-right .shoe {
+  animation: footFlexRight var(--animation-duration) ease-in-out;
+}
+
+/* Add knee and ankle animations */
+.css-man.extracting .knee-left {
+  animation: kneeFlexLeft var(--animation-duration) ease-in-out;
+}
+
+.css-man.extracting .knee-right {
+  animation: kneeFlexRight var(--animation-duration) ease-in-out;
+}
+
+.css-man.extracting .ankle-left {
+  animation: ankleFlexLeft var(--animation-duration) ease-in-out;
+}
+
+.css-man.extracting .ankle-right {
+  animation: ankleFlexRight var(--animation-duration) ease-in-out;
+}
+
+.css-man.extracting .body-core {
+  animation: bodyBounce var(--animation-duration) ease-in-out;
+}
+
+.css-man.extracting .head {
+  animation: headBob var(--animation-duration) ease-in-out;
+}
+
+/* Arms swinging during walk */
+@keyframes armSwingWalkRight {
+  0%, 50%, 100% { transform: rotate(-5deg); }
+  10%, 90% { transform: rotate(-15deg); }
+  30%, 70% { transform: rotate(5deg); }
+}
+
+@keyframes armSwingWalkLeft {
+  0%, 50%, 100% { transform: rotate(5deg); }
+  10%, 90% { transform: rotate(15deg); }
+  30%, 70% { transform: rotate(-5deg); }
+}
+
+.css-man.extracting .arm-left {
+  animation: armSwingWalkLeft var(--animation-duration) ease-in-out;
+}
+
+/* Override right arm animation during the reach phase */
+.css-man.extracting .arm-right {
+  animation-name: reachIntoBag, armSwingWalkRight;
+  animation-duration: var(--animation-duration), var(--animation-duration);
+  animation-timing-function: ease-in-out, ease-in-out;
+  animation-fill-mode: forwards, forwards;
+}
+
+/* Extraction item animation */
+.extraction-item {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-image: url('potato.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0;
+  z-index: 20;
+}
+
+@keyframes extractItem {
+  0% {
+    opacity: 0;
+    transform: scale(0) translateY(0);
+  }
+  50% {
+    opacity: 0;
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1) translateY(100px);
+  }
+}
+
+.extraction-item.active {
+  animation: extractItem var(--animation-duration) ease-in-out;
+}
+
+/* Apply these animations to the bone and joint elements */
+.css-man.extracting .femur {
+  animation-duration: var(--animation-duration);
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.css-man.extracting .leg-left .femur {
+  animation-name: femurWalkLeft;
+}
+
+.css-man.extracting .leg-right .femur {
+  animation-name: femurWalkRight;
+}
+
+.css-man.extracting .patella {
+  animation-duration: var(--animation-duration);
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.css-man.extracting .leg-left .patella {
+  animation-name: patellaFlexLeft;
+}
+
+.css-man.extracting .leg-right .patella {
+  animation-name: patellaFlexRight;
+}
+
+.css-man.extracting .knee-ligament {
+  animation-duration: var(--animation-duration);
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.css-man.extracting .leg-left .knee-ligament {
+  animation-name: ligamentStretchLeft;
+}
+
+.css-man.extracting .leg-right .knee-ligament {
+  animation-name: ligamentStretchRight;
+}
+
+.css-man.extracting .tibia {
+  animation-duration: var(--animation-duration);
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.css-man.extracting .leg-left .tibia {
+  animation-name: tibiaWalkLeft;
+}
+
+.css-man.extracting .leg-right .tibia {
+  animation-name: tibiaWalkRight;
+}
+
+.css-man.extracting .calf-muscle {
+  animation: calfMuscleFlex var(--animation-duration) ease-in-out;
+}

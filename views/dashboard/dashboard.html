@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>InnovaTech Dashboard - Home</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter&family=Poppins:wght@700&display=swap" rel="stylesheet" />
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="../../assets/css/dashboard/dashboard.css">
+    <link rel="stylesheet" href="../../assets/css/dashboard/home.css">
+</head>
+
+<body>
+
+    <nav role="navigation" aria-label="Dashboard Navigation">
+        <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="nav-left">
+            <button class="nav-btn active" data-section="home">
+                <i class="fas fa-home"></i> Home
+            </button>
+            <button class="nav-btn" data-section="customer">
+                <i class="fas fa-users"></i> Customer
+            </button>
+            <button class="nav-btn" data-section="vendor">
+                <i class="fas fa-building"></i> Vendor
+            </button>
+            <button class="nav-btn" data-section="sale">
+                <i class="fas fa-shopping-cart"></i> Sale
+            </button>
+            <button class="nav-btn" data-section="purchase">
+                <i class="fas fa-truck"></i> Purchase
+            </button>
+            <button class="nav-btn" data-section="salereturn">
+                <i class="fas fa-undo"></i> Sale Return
+            </button>
+            <button class="nav-btn" data-section="purchasereturn">
+                <i class="fas fa-undo-alt"></i> Purchase Return
+            </button>
+            <button class="nav-btn" data-section="bom">
+                <i class="fas fa-clipboard-list"></i> BOM
+            </button>
+            <button class="nav-btn" data-section="bomlist">
+                <i class="fas fa-list"></i> BOM List
+            </button>
+            <button class="nav-btn" data-section="extraction">
+                <i class="fas fa-filter"></i> Extraction
+            </button>
+            <button class="nav-btn" data-section="receivevoucher">
+                <i class="fas fa-file-invoice-dollar"></i> Receive Voucher
+            </button>
+            <button class="nav-btn" data-section="paymentvoucher">
+                <i class="fas fa-money-check"></i> Payment Voucher
+            </button>
+            <button class="nav-btn" data-section="expensevoucher">
+                <i class="fas fa-receipt"></i> Expense Voucher
+            </button>
+            <button class="nav-btn" data-section="journalvoucher">
+                <i class="fas fa-book"></i> Journal Voucher
+            </button>
+            <button class="nav-btn" data-section="setup">
+                <i class="fas fa-cogs"></i> Setup
+            </button>
+            <button class="nav-btn" data-section="reports">
+                <i class="fas fa-chart-bar"></i> Reports
+            </button>
+            <button class="nav-btn" data-section="hr">
+                <i class="fas fa-user-tie"></i> HR
+            </button>
+            <button class="nav-btn" data-section="settings">
+                <i class="fas fa-cog"></i> Settings
+            </button>
+            <button id="logout-btn">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+        </div>
+    </nav>
+
+    <section class="content" id="content-area">
+        <div class="home-container">
+            <!-- Welcome Section -->
+            <div class="welcome-section">
+                <div class="welcome-text">
+                    <h1>Welcome back, <span id="user-name">Admin</span></h1>
+                    <p class="welcome-message">Your business dashboard overview for today, <span id="current-date">June 15, 2023</span>
+                    </p>
+                </div>
+                <div class="welcome-actions">
+                    <button class="action-btn">
+                        <i class="fas fa-plus"></i> New Transaction
+                    </button>
+                    <button class="action-btn secondary">
+                        <i class="fas fa-file-export"></i> Export Data
+                    </button>
+                </div>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon sales">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Today's Sales</h3>
+                        <div class="stat-value">$12,586</div>
+                        <div class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i> 12.5%
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon orders">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>New Orders</h3>
+                        <div class="stat-value">142</div>
+                        <div class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i> 8.3%
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon revenue">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Total Revenue</h3>
+                        <div class="stat-value">$48,294</div>
+                        <div class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i> 14.7%
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon inventory">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Low Stock Items</h3>
+                        <div class="stat-value">24</div>
+                        <div class="stat-change negative">
+                            <i class="fas fa-arrow-up"></i> 5.2%
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard Main Content -->
+            <div class="dashboard-grid">
+                <!-- Sales Chart -->
+                <div class="dashboard-card wide">
+                    <div class="card-header">
+                        <h2>Sales Overview</h2>
+                        <div class="card-actions">
+                            <select class="time-select">
+                                <option value="today">Today</option>
+                                <option value="week" selected>This Week</option>
+                                <option value="month">This Month</option>
+                                <option value="year">This Year</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container">
+                            <div class="chart-placeholder">
+                                <div class="chart-bar" style="height: 30%"></div>
+                                <div class="chart-bar" style="height: 45%"></div>
+                                <div class="chart-bar" style="height: 65%"></div>
+                                <div class="chart-bar" style="height: 40%"></div>
+                                <div class="chart-bar" style="height: 55%"></div>
+                                <div class="chart-bar" style="height: 75%"></div>
+                                <div class="chart-bar" style="height: 60%"></div>
+                            </div>
+                            <div class="chart-labels">
+                                <div class="chart-label">Mon</div>
+                                <div class="chart-label">Tue</div>
+                                <div class="chart-label">Wed</div>
+                                <div class="chart-label">Thu</div>
+                                <div class="chart-label">Fri</div>
+                                <div class="chart-label">Sat</div>
+                                <div class="chart-label">Sun</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h2>Recent Activity</h2>
+                        <div class="card-actions">
+                            <button class="action-link">View All</button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <div class="activity-icon invoice">
+                                    <i class="fas fa-file-invoice-dollar"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <div class="activity-title">New invoice created</div>
+                                    <div class="activity-desc">Invoice #INV-2023-0458 for $1,250.00</div>
+                                    <div class="activity-time">15 minutes ago</div>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon payment">
+                                    <i class="fas fa-credit-card"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <div class="activity-title">Payment received</div>
+                                    <div class="activity-desc">$3,500.00 from Acme Corporation</div>
+                                    <div class="activity-time">2 hours ago</div>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon order">
+                                    <i class="fas fa-shopping-bag"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <div class="activity-title">New order placed</div>
+                                    <div class="activity-desc">Order #ORD-2023-7851 for 5 items</div>
+                                    <div class="activity-time">3 hours ago</div>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon user">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <div class="activity-title">New customer registered</div>
+                                    <div class="activity-desc">John Smith from TechCorp</div>
+                                    <div class="activity-time">5 hours ago</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Top Products -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h2>Top Products</h2>
+                        <div class="card-actions">
+                            <button class="action-link">View All</button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="product-list">
+                            <div class="product-item">
+                                <div class="product-name">Wireless Headphones</div>
+                                <div class="product-stats">
+                                    <div class="product-sales">246 sold</div>
+                                    <div class="product-revenue">$12,300</div>
+                                </div>
+                                <div class="product-progress">
+                                    <div class="progress-bar" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <div class="product-item">
+                                <div class="product-name">Bluetooth Speaker</div>
+                                <div class="product-stats">
+                                    <div class="product-sales">187 sold</div>
+                                    <div class="product-revenue">$9,350</div>
+                                </div>
+                                <div class="product-progress">
+                                    <div class="progress-bar" style="width: 70%"></div>
+                                </div>
+                            </div>
+                            <div class="product-item">
+                                <div class="product-name">Smart Watch</div>
+                                <div class="product-stats">
+                                    <div class="product-sales">142 sold</div>
+                                    <div class="product-revenue">$7,100</div>
+                                </div>
+                                <div class="product-progress">
+                                    <div class="progress-bar" style="width: 55%"></div>
+                                </div>
+                            </div>
+                            <div class="product-item">
+                                <div class="product-name">Wireless Charger</div>
+                                <div class="product-stats">
+                                    <div class="product-sales">128 sold</div>
+                                    <div class="product-revenue">$3,840</div>
+                                </div>
+                                <div class="product-progress">
+                                    <div class="progress-bar" style="width: 45%"></div>
+                                </div>
+                            </div>
+                            <div class="product-item">
+                                <div class="product-name">USB-C Cable</div>
+                                <div class="product-stats">
+                                    <div class="product-sales">95 sold</div>
+                                    <div class="product-revenue">$1,425</div>
+                                </div>
+                                <div class="product-progress">
+                                    <div class="progress-bar" style="width: 30%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h2>Quick Actions</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="actions-grid">
+                            <a href="#" class="action-tile">
+                                <i class="fas fa-file-invoice"></i>
+                                <span>Create Invoice</span>
+                            </a>
+                            <a href="#" class="action-tile">
+                                <i class="fas fa-user-plus"></i>
+                                <span>Add Customer</span>
+                            </a>
+                            <a href="#" class="action-tile">
+                                <i class="fas fa-box-open"></i>
+                                <span>Add Product</span>
+                            </a>
+                            <a href="#" class="action-tile">
+                                <i class="fas fa-chart-pie"></i>
+                                <span>View Reports</span>
+                            </a>
+                            <a href="#" class="action-tile">
+                                <i class="fas fa-truck"></i>
+                                <span>Manage Orders</span>
+                            </a>
+                            <a href="#" class="action-tile">
+                                <i class="fas fa-cog"></i>
+                                <span>Settings</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Upcoming & Pending -->
+            <div class="secondary-grid">
+                <!-- Upcoming Payments -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h2>Upcoming Payments</h2>
+                        <div class="card-actions">
+                            <button class="action-link">View All</button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="payments-list">
+                            <div class="payment-item">
+                                <div class="payment-details">
+                                    <div class="payment-customer">TechCorp Inc.</div>
+                                    <div class="payment-invoice">Invoice #INV-2023-0427</div>
+                                </div>
+                                <div class="payment-value">$3,750.00</div>
+                                <div class="payment-due warning">Due in 2 days</div>
+                            </div>
+                            <div class="payment-item">
+                                <div class="payment-details">
+                                    <div class="payment-customer">Global Solutions Ltd</div>
+                                    <div class="payment-invoice">Invoice #INV-2023-0418</div>
+                                </div>
+                                <div class="payment-value">$2,450.00</div>
+                                <div class="payment-due critical">Due today</div>
+                            </div>
+                            <div class="payment-item">
+                                <div class="payment-details">
+                                    <div class="payment-customer">Bright Innovations</div>
+                                    <div class="payment-invoice">Invoice #INV-2023-0442</div>
+                                </div>
+                                <div class="payment-value">$1,875.00</div>
+                                <div class="payment-due">Due in 7 days</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pending Orders -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h2>Pending Orders</h2>
+                        <div class="card-actions">
+                            <button class="action-link">View All</button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="orders-list">
+                            <div class="order-item">
+                                <div class="order-details">
+                                    <div class="order-id">#ORD-2023-7834</div>
+                                    <div class="order-customer">Michael Johnson</div>
+                                </div>
+                                <div class="order-stats">
+                                    <div class="order-amount">$950.00</div>
+                                    <div class="order-products">4 items</div>
+                                </div>
+                                <div class="order-status processing">Processing</div>
+                            </div>
+                            <div class="order-item">
+                                <div class="order-details">
+                                    <div class="order-id">#ORD-2023-7842</div>
+                                    <div class="order-customer">Sarah Williams</div>
+                                </div>
+                                <div class="order-stats">
+                                    <div class="order-amount">$1,240.00</div>
+                                    <div class="order-products">6 items</div>
+                                </div>
+                                <div class="order-status pending">Pending</div>
+                            </div>
+                            <div class="order-item">
+                                <div class="order-details">
+                                    <div class="order-id">#ORD-2023-7851</div>
+                                    <div class="order-customer">James Brown</div>
+                                </div>
+                                <div class="order-stats">
+                                    <div class="order-amount">$785.00</div>
+                                    <div class="order-products">3 items</div>
+                                </div>
+                                <div class="order-status shipped">Shipped</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Include jQuery (optional) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Include common navigation script -->
+    <script src="../../assets/js/common/navigation.js"></script>
+    <!-- Include dashboard scripts -->
+    <script src="../../assets/js/dashboard/dashboard.js"></script>
+    <script src="../../assets/js/dashboard/home.js"></script>
+</body>
+
+</html>

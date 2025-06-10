@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Manual BOM Form | InnovaTech</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@600&display=swap"
+        rel="stylesheet" />
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <!-- First load dashboard CSS, then load other CSS files -->
+    <link rel="stylesheet" href="../../../assets/css/dashboard/dashboard.css">
+    <link rel="stylesheet" href="../../../assets/css/entry/bom/bom.css">
+    <!-- jQuery and Select2 -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+</head>
+
+<body>
+    <nav role="navigation" aria-label="Dashboard Navigation">
+        <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="nav-left">
+            <button class="nav-btn" data-section="home">
+                <i class="fas fa-home"></i> Home
+            </button>
+            <button class="nav-btn" data-section="customer">
+                <i class="fas fa-users"></i> Customer
+            </button>
+            <button class="nav-btn" data-section="vendor">
+                <i class="fas fa-building"></i> Vendor
+            </button>
+            <button class="nav-btn" data-section="sale">
+                <i class="fas fa-shopping-cart"></i> Sale
+            </button>
+            <button class="nav-btn" data-section="purchase">
+                <i class="fas fa-truck"></i> Purchase
+            </button>
+            <button class="nav-btn" data-section="salereturn">
+                <i class="fas fa-undo"></i> Sale Return
+            </button>
+            <button class="nav-btn" data-section="purchasereturn">
+                <i class="fas fa-undo-alt"></i> Purchase Return
+            </button>
+            <button class="nav-btn active" data-section="bom">
+                <i class="fas fa-clipboard-list"></i> BOM
+            </button>
+            <button class="nav-btn" data-section="bomlist">
+                <i class="fas fa-list"></i> BOM List
+            </button>
+            <button class="nav-btn" data-section="extraction">
+                <i class="fas fa-filter"></i> Extraction
+            </button>
+            <button class="nav-btn" data-section="receivevoucher">
+                <i class="fas fa-file-invoice-dollar"></i> Receive Voucher
+            </button>
+            <button class="nav-btn" data-section="paymentvoucher">
+                <i class="fas fa-money-check"></i> Payment Voucher
+            </button>
+            <button class="nav-btn" data-section="expensevoucher">
+                <i class="fas fa-receipt"></i> Expense Voucher
+            </button>
+            <button class="nav-btn" data-section="journalvoucher">
+                <i class="fas fa-book"></i> Journal Voucher
+            </button>
+            <button class="nav-btn" data-section="setup">
+                <i class="fas fa-cogs"></i> Setup
+            </button>
+            <button class="nav-btn" data-section="reports">
+                <i class="fas fa-chart-bar"></i> Reports
+            </button>
+            <button class="nav-btn" data-section="hr">
+                <i class="fas fa-user-tie"></i> HR
+            </button>
+            <button class="nav-btn" data-section="settings">
+                <i class="fas fa-cog"></i> Settings
+            </button>
+            <button id="logout-btn">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+        </div>
+    </nav>
+
+    <section class="content" id="content-area">
+        <div class="form-card">
+            <div class="header-container">
+                <h1>Manual BOM Form</h1>
+                <button class="btn btn-primary" onclick="openStatusModal()">Status</button>
+            </div>
+            <div class="success-message" id="success-message">BOM saved successfully!</div>
+            <div class="error-message" id="error-message"></div>
+
+            <label>Job No (Auto):</label>
+            <input type="text" id="auto-job-no" value="" readonly>
+
+            <label>Job No:</label>
+            <select id="job-no-select" style="width: 100%">
+                <option value="">Select a Job No</option>
+                <!-- Job numbers will be populated by JavaScript -->
+            </select>
+
+            <label>Machine No:</label>
+            <select id="machine-no">
+                <option value="">Select Machine</option>
+                <!-- Machines will be populated by JavaScript -->
+            </select>
+
+            <label>Finished Good:</label>
+            <select id="finished-good">
+                <option value="">Select Finished Good</option>
+                <!-- Finished goods will be populated by JavaScript -->
+            </select>
+
+            <div class="unit-container">
+                <label>Unit:</label>
+                <div class="unit-control-group">
+                    <select id="main-unit-select">
+                        <option value="">Select Unit</option>
+                        <option value="Grams">Grams</option>
+                        <option value="Kilograms">Kilograms</option>
+                        <option value="Liters">Liters</option>
+                        <option value="Tonne">Tonne</option>
+                    </select>
+                    <button type="button" class="btn btn-small btn-accent unit-control-btn"
+                        onclick="openAddUnitModal('main')">+</button>
+                    <button type="button" class="btn btn-small btn-cancelled unit-control-btn"
+                        onclick="openDeleteUnitModal('main')">-</button>
+                </div>
+            </div>
+
+            <h2 style="font-size: 1.2rem; color: #2b6cb0; margin: 1.5rem 0;">Add New BOM Entries</h2>
+            <table id="bom-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Day</th>
+                        <th>Raw Material</th>
+                        <th>Unit</th>
+                        <th>Qty</th>
+                        <th>Amount</th>
+                        <th>Conversion</th>
+                        <th>Density</th>
+                        <th>Ctrl</th>
+                    </tr>
+                </thead>
+                <tbody id="bom-table-body"></tbody>
+            </table>
+            <div class="total-qty" id="total-qty">Total Qty: 0.00</div>
+            <button class="btn btn-accent" onclick="addRow()">+ Add Row</button>
+            <button class="btn btn-primary" onclick="saveBOM()">Save BOM</button>
+
+            <h2 style="font-size: 1.2rem; color: #2b6cb0; margin: 2rem 0 1rem;">Existing BOM Entries</h2>
+            <table id="summary-table" class="summary-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Raw Material</th>
+                        <th>Unit</th>
+                        <th>Qty</th>
+                    </tr>
+                </thead>
+                <tbody id="summary-body"></tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Status Modal -->
+    <div class="modal" id="status-modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeStatusModal()">×</span>
+            <h2>BOM Status Management</h2>
+            <div class="bom-list" id="bom-list">
+                <!-- BOM status list will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Unit Modal -->
+    <div class="modal" id="add-unit-modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeAddUnitModal()">×</span>
+            <h2>Add New Unit</h2>
+            <label for="new-unit-name">Unit Name:</label>
+            <input type="text" id="new-unit-name" placeholder="Enter new unit name">
+            <input type="hidden" id="unit-target-type" value="main">
+            <div class="modal-buttons">
+                <button class="btn btn-cancelled" onclick="closeAddUnitModal()">Cancel</button>
+                <button class="btn btn-primary" onclick="addNewUnit()">Add Unit</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Unit Modal -->
+    <div class="modal" id="delete-unit-modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeDeleteUnitModal()">×</span>
+            <h2>Delete Unit</h2>
+            <label for="delete-unit-select">Select Unit to Delete:</label>
+            <select id="delete-unit-select">
+                <!-- Units will be populated by JavaScript -->
+            </select>
+            <input type="hidden" id="delete-unit-target-type" value="main">
+            <div class="modal-buttons">
+                <button class="btn btn-cancelled" onclick="closeDeleteUnitModal()">Cancel</button>
+                <button class="btn btn-primary" onclick="deleteUnit()">Delete Unit</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Define constants and data fetch function -->
+    <script>
+        // Dynamically determine the base URL
+        const BASE_URL = window.location.pathname.split('/views/')[0] + '/controllers/entry/bom/index.php';
+        let AUTO_JOB_NO = 1;
+        let RAW_MATERIALS = [];
+        let JOB_NOS = [];
+        let MACHINES = [];
+        let FINISHED_GOODS = [];
+        let ALL_BOMS = [];
+        let UNITS = ['Grams', 'Kilograms', 'Liters', 'Tonne'];
+
+        // Fetch initial data from the server
+        function fetchInitialData() {
+            $('#error-message').text('Loading data...').show();
+            $.ajax({
+                url: BASE_URL,
+                method: 'POST',
+                data: { fetch_initial_data: true },
+                dataType: 'json',
+                success: function (response) {
+                    $('#error-message').hide();
+                    if (response.success) {
+                        AUTO_JOB_NO = response.autoJobNo || 1;
+                        RAW_MATERIALS = response.rawMaterials || [];
+                        JOB_NOS = response.jobNos || [];
+                        MACHINES = response.machines || [];
+                        FINISHED_GOODS = response.finishedGoods || [];
+                        ALL_BOMS = response.allBOMs || [];
+                        UNITS = response.units || ['Grams', 'Kilograms', 'Liters', 'Tonne'];
+
+                        // Update UI with the fetched data
+                        populateInitialData();
+                    } else {
+                        let errorMsg = response.message || 'Error fetching initial data';
+                        if (response.error_details) {
+                            console.error('Error details:', response.error_details);
+                            errorMsg += ' (Check console for details)';
+                        }
+                        $('#error-message').text(errorMsg).show();
+                    }
+                },
+                error: function (xhr, status, error) {
+                    let errorMsg = 'Failed to connect to the server';
+                    if (xhr.responseText) {
+                        try {
+                            const response = JSON.parse(xhr.responseText);
+                            errorMsg = response.message || errorMsg;
+                            if (response.error_details) {
+                                console.error('Error details:', response.error_details);
+                                errorMsg += ' (Check console for details)';
+                            }
+                        } catch (e) {
+                            console.error('Server response:', xhr.responseText);
+                            errorMsg += ' (Check console for details)';
+                        }
+                    }
+                    $('#error-message').text(errorMsg).show();
+                }
+            });
+        }
+
+        // Populate UI with the fetched data
+        function populateInitialData() {
+            // Set auto job number
+            $('#auto-job-no').val(AUTO_JOB_NO);
+
+            // Populate job numbers dropdown
+            const jobNoSelect = $('#job-no-select');
+            jobNoSelect.empty().append('<option value="">Select a Job No</option>');
+            JOB_NOS.forEach(jobNo => {
+                jobNoSelect.append(`<option value="${jobNo}">${jobNo}</option>`);
+            });
+
+            // Populate machines dropdown
+            const machineNoSelect = $('#machine-no');
+            machineNoSelect.empty().append('<option value="">Select Machine</option>');
+            MACHINES.forEach(machine => {
+                machineNoSelect.append(`<option value="${machine.id}">${machine.id} - ${machine.machine_name || 'N/A'} (${machine.machine_type || 'Unknown Type'})</option>`);
+            });
+
+            // Populate finished goods dropdown
+            const finishedGoodSelect = $('#finished-good');
+            finishedGoodSelect.empty().append('<option value="">Select Finished Good</option>');
+            FINISHED_GOODS.forEach(fg => {
+                finishedGoodSelect.append(`<option value="${fg}">${fg}</option>`);
+            });
+
+            // Populate units dropdown
+            const mainUnitSelect = $('#main-unit-select');
+            mainUnitSelect.empty().append('<option value="">Select Unit</option>');
+            UNITS.forEach(unit => {
+                mainUnitSelect.append(`<option value="${unit}">${unit}</option>`);
+            });
+
+            // Populate BOM status list
+            const bomList = $('#bom-list');
+            bomList.empty();
+            ALL_BOMS.forEach(bom => {
+                const bomItem = $(`
+                    <div class="bom-item">
+                        <span>Job No: ${bom.job_no} | Machine: ${bom.machine_no || ''} | Finished Good: ${bom.finished_good || ''}</span>
+                        <div class="status-buttons">
+                            <button class="btn-status btn-processing ${bom.status === 'Processing' ? 'active' : ''}" 
+                                    onclick="updateStatus(${bom.job_no}, 'Processing')">Processing</button>
+                            <button class="btn-status btn-completed ${bom.status === 'Completed' ? 'active' : ''}" 
+                                    onclick="updateStatus(${bom.job_no}, 'Completed')">Completed</button>
+                            <button class="btn-status btn-cancelled ${bom.status === 'Cancelled' ? 'active' : ''}" 
+                                    onclick="updateStatus(${bom.job_no}, 'Cancelled')">Cancelled</button>
+                        </div>
+                    </div>
+                `);
+                bomList.append(bomItem);
+            });
+
+            // We're no longer adding a default row on page load
+            // The table will remain empty until the user clicks "Add Row"
+        }
+
+        // Open add unit modal
+        function openAddUnitModal(targetType) {
+            $('#unit-target-type').val(targetType);
+            $('#new-unit-name').val('');
+            $('#add-unit-modal').show();
+        }
+
+        // Close add unit modal
+        function closeAddUnitModal() {
+            $('#add-unit-modal').hide();
+        }
+
+        // Add new unit
+        function addNewUnit() {
+            const newUnitName = $('#new-unit-name').val().trim();
+            const targetType = $('#unit-target-type').val();
+
+            if (!newUnitName) {
+                $('#error-message').text('Please enter a unit name').show().delay(3000).fadeOut();
+                return;
+            }
+
+            // Check if unit already exists
+            if (UNITS.includes(newUnitName)) {
+                $('#error-message').text('This unit already exists').show().delay(3000).fadeOut();
+                return;
+            }
+
+            // Add unit to server
+            $.ajax({
+                url: BASE_URL,
+                method: 'POST',
+                data: { add_unit: true, unit_name: newUnitName },
+                success: function (response) {
+                    if (response.success) {
+                        // Add to local units array
+                        UNITS.push(newUnitName);
+
+                        // Update main unit dropdown
+                        $('#main-unit-select').append(`<option value="${newUnitName}">${newUnitName}</option>`);
+
+                        // Update row unit dropdowns
+                        $('.unit-select').each(function () {
+                            $(this).append(`<option value="${newUnitName}">${newUnitName}</option>`);
+                        });
+
+                        // Select the new unit if it was the target
+                        if (targetType === 'main') {
+                            $('#main-unit-select').val(newUnitName).trigger('change');
+                        }
+
+                        $('#success-message').text('Unit added successfully').show().delay(3000).fadeOut();
+                        closeAddUnitModal();
+                    } else {
+                        $('#error-message').text(response.message || 'Error adding unit').show().delay(3000).fadeOut();
+                    }
+                },
+                error: function () {
+                    $('#error-message').text('Failed to connect to the server').show().delay(3000).fadeOut();
+                }
+            });
+        }
+
+        // Open delete unit modal
+        function openDeleteUnitModal(targetType) {
+            $('#delete-unit-target-type').val(targetType);
+
+            // Populate delete unit dropdown
+            const deleteUnitSelect = $('#delete-unit-select');
+            deleteUnitSelect.empty();
+            UNITS.forEach(unit => {
+                deleteUnitSelect.append(`<option value="${unit}">${unit}</option>`);
+            });
+
+            $('#delete-unit-modal').show();
+        }
+
+        // Close delete unit modal
+        function closeDeleteUnitModal() {
+            $('#delete-unit-modal').hide();
+        }
+
+        // Delete unit
+        function deleteUnit() {
+            const unitToDelete = $('#delete-unit-select').val();
+
+            if (!unitToDelete) {
+                $('#error-message').text('Please select a unit to delete').show().delay(3000).fadeOut();
+                return;
+            }
+
+            // Delete unit from server
+            $.ajax({
+                url: BASE_URL,
+                method: 'POST',
+                data: { delete_unit: true, unit_name: unitToDelete },
+                success: function (response) {
+                    if (response.success) {
+                        // Remove from local units array
+                        UNITS = UNITS.filter(unit => unit !== unitToDelete);
+
+                        // Update main unit dropdown
+                        $(`#main-unit-select option[value="${unitToDelete}"]`).remove();
+
+                        // Update row unit dropdowns
+                        $(`.unit-select option[value="${unitToDelete}"]`).remove();
+
+                        $('#success-message').text('Unit deleted successfully').show().delay(3000).fadeOut();
+                        closeDeleteUnitModal();
+                    } else {
+                        $('#error-message').text(response.message || 'Error deleting unit').show().delay(3000).fadeOut();
+                    }
+                },
+                error: function () {
+                    $('#error-message').text('Failed to connect to the server').show().delay(3000).fadeOut();
+                }
+            });
+        }
+
+        // Fetch initial data when the page loads
+        $(document).ready(function () {
+            fetchInitialData();
+        });
+    </script>
+
+    <!-- Include dashboard script first to ensure navigation functions are loaded -->
+    <script src="../../../assets/js/dashboard/dashboard.js"></script>
+    <script src="../../../assets/js/common/navigation.js"></script>
+    <script src="../../../assets/js/entry/bom/bom.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Machine Entry</title>
+    <link rel="stylesheet" href="../../../assets/css/setup/machineSetup.css">
+    <!-- Add Toastify CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <!-- Add fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+    <!-- <nav role="navigation" aria-label="Dashboard Navigation">
+        <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="nav-left">
+            <button id="back-to-setup" class="nav-btn">
+                <i class="fas fa-arrow-left"></i> Back to Setup
+            </button>
+            <button class="nav-btn" data-section="home">
+                <i class="fas fa-home"></i> Home
+            </button>
+            <button class="nav-btn" data-section="customer">Customer</button>
+            <button class="nav-btn" data-section="vendor">Vendor</button>
+            <button class="nav-btn" data-section="sale">Sale</button>
+            <button class="nav-btn" data-section="purchase">Purchase</button>
+            <button class="nav-btn" data-section="salereturn">Sale Return</button>
+            <button class="nav-btn" data-section="purchasereturn">Purchase Return</button>
+            <button class="nav-btn" data-section="bom">BOM</button>
+            <button class="nav-btn" data-section="receivevoucher">Receive Voucher</button>
+            <button class="nav-btn" data-section="paymentvoucher">Payment Voucher</button>
+            <button class="nav-btn" data-section="expensevoucher">Expense Voucher</button>
+            <button class="nav-btn" data-section="journalvoucher">Journal Voucher</button>
+            <button class="nav-btn active" data-section="setup">Setup</button>
+            <button class="nav-btn" data-section="reports">Reports</button>
+            <button class="nav-btn" data-section="hr">HR</button>
+            <button class="nav-btn" data-section="settings">Settings</button>
+            <button id="logout-btn">Logout</button>
+        </div>
+    </nav> -->
+    <div class="form-card">
+        <div class="header-container">
+            <h1 id="page-title">Machine Entry</h1>
+            <button class="btn btn-primary" onclick="openModal()">Add New Entry</button>
+        </div>
+
+        <div id="errorContainer" class="error" style="display: none;"></div>
+
+        <!-- Data table with loading indicator -->
+        <div id="loading-indicator" style="text-align: center; margin-top: 20px; display: none;">
+            <p>Loading data...</p>
+        </div>
+
+        <!-- Machine Entries Table -->
+        <table id="machine-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Date</th>
+                    <th>Machine Name</th>
+                    <th>Machine Type</th>
+                    <th>Other</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="machine-table-body">
+                <!-- Table rows will be populated by JavaScript -->
+            </tbody>
+        </table>
+
+        <!-- No data message -->
+        <div id="no-data-message" style="text-align: center; margin-top: 20px; display: none;">
+            <p>No machine entries found. Click "Add New Entry" to create one.</p>
+        </div>
+
+        <!-- Modal for Adding New Entry -->
+        <div id="entryModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <h2 id="modal-title">Add Machine Entry</h2>
+                <form id="machineForm">
+                    <label for="entry-id">ID</label>
+                    <input type="text" id="entry-id" readonly required placeholder="Auto-generated ID">
+
+                    <label for="date">Date</label>
+                    <input type="date" id="date" required>
+
+                    <label for="machine-name">Machine Name</label>
+                    <input type="text" id="machine-name" required placeholder="Enter machine name">
+
+                    <label for="machine-type">Machine Type</label>
+                    <input type="text" id="machine-type" required placeholder="Enter machine type">
+
+                    <label for="other">Other</label>
+                    <input type="text" id="other" placeholder="Additional information">
+
+                    <button type="submit" class="btn btn-accent" style="margin-top: 1rem;">Save Entry</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Add Toastify JS -->
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <!-- Add common navigation.js -->
+    <script src="../../../assets/js/common/navigation.js"></script>
+    <script src="../../../assets/js/setup/machineSetup.js"></script>
+</body>
+
+</html>

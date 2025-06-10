@@ -1,0 +1,422 @@
+/* 
+ * Extraction Feedback Animations
+ * Provides visual feedback (success/error) after clicking the Extract button
+ */
+
+/* Container for the notification messages */
+.notification-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  width: 300px;
+  max-width: 90vw;
+}
+
+/* Base notification styling */
+.notification {
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  animation: slideIn 0.5s ease forwards, fadeOut 0.5s ease forwards 5s;
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+/* Success notification */
+.notification-success {
+  background-color: #ebf9f1;
+  border-left: 5px solid #38a169;
+  color: #2f855a;
+}
+
+/* Error notification */
+.notification-error {
+  background-color: #fef2f2;
+  border-left: 5px solid #e53e3e;
+  color: #c53030;
+}
+
+/* Warning notification */
+.notification-warning {
+  background-color: #fffbeb;
+  border-left: 5px solid #dd6b20;
+  color: #c05621;
+}
+
+/* Icons for notifications */
+.notification-icon {
+  margin-right: 12px;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+}
+
+/* Success icon */
+.notification-success .notification-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2338a169'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z'/%3E%3C/svg%3E");
+}
+
+/* Error icon */
+.notification-error .notification-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23e53e3e'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z'/%3E%3C/svg%3E");
+}
+
+/* Warning icon */
+.notification-warning .notification-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23dd6b20'%3E%3Cpath d='M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z'/%3E%3C/svg%3E");
+}
+
+/* Message content */
+.notification-content {
+  flex-grow: 1;
+}
+
+/* Title styling */
+.notification-title {
+  font-weight: bold;
+  margin-bottom: 4px;
+  font-size: 16px;
+}
+
+/* Message styling */
+.notification-message {
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* Close button */
+.notification-close {
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0.6;
+  padding: 0 0 0 10px;
+  transition: opacity 0.2s;
+}
+
+.notification-close:hover {
+  opacity: 1;
+}
+
+/* Progress bar for auto-dismiss timing */
+.notification-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  transform-origin: left;
+  transform: scaleX(0);
+}
+
+.notification-success .notification-progress {
+  background-color: #38a169;
+  animation: progress 5s linear forwards;
+}
+
+.notification-error .notification-progress {
+  background-color: #e53e3e;
+  animation: progress 5s linear forwards;
+}
+
+.notification-warning .notification-progress {
+  background-color: #dd6b20;
+  animation: progress 5s linear forwards;
+}
+
+/* Animations */
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0%, 80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+@keyframes progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Success animation effects - visible after successful extraction */
+.extraction-success-effect {
+  position: absolute;
+  pointer-events: none;
+  z-index: 100;
+  opacity: 0;
+}
+
+/* Sparkle animation around the extraction area */
+.sparkle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: #48bb78;
+  border-radius: 50%;
+  animation: sparkle 1s ease-out forwards;
+}
+
+@keyframes sparkle {
+  0% {
+    transform: translate(0, 0) scale(0);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(calc(var(--x) * 50px), calc(var(--y) * 50px)) scale(0);
+    opacity: 0;
+  }
+}
+
+/* Checkmark animation in the center of extraction */
+.checkmark-circle {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-color: rgba(56, 161, 105, 0.2);
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  animation: checkmarkCircle 1s ease-out forwards;
+}
+
+@keyframes checkmarkCircle {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+  }
+}
+
+.checkmark {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  animation: checkmark 1s ease-out forwards 0.3s;
+}
+
+@keyframes checkmark {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 1;
+  }
+  70% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+  }
+}
+
+.checkmark::before,
+.checkmark::after {
+  content: '';
+  position: absolute;
+  background-color: #38a169;
+  border-radius: 2px;
+}
+
+.checkmark::before {
+  width: 8px;
+  height: 3px;
+  top: 18px;
+  left: 8px;
+  transform: rotate(45deg);
+}
+
+.checkmark::after {
+  width: 16px;
+  height: 3px;
+  top: 16px;
+  left: 10px;
+  transform: rotate(-45deg);
+}
+
+/* Pulse effect for emphasis */
+.pulse {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background-color: rgba(56, 161, 105, 0.1);
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  animation: pulse 1.5s ease-out forwards;
+}
+
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2);
+    opacity: 0;
+  }
+}
+
+/* Error animation effects */
+.error-shake {
+  animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+
+/* Error X-mark animation */
+.error-x {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  animation: errorX 0.8s ease-out forwards;
+}
+
+@keyframes errorX {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 1;
+  }
+  70% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+  }
+}
+
+.error-x::before,
+.error-x::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 3px;
+  background-color: #e53e3e;
+  border-radius: 2px;
+  top: 14px;
+  left: 5px;
+}
+
+.error-x::before {
+  transform: rotate(45deg);
+}
+
+.error-x::after {
+  transform: rotate(-45deg);
+}
+
+.error-circle {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-color: rgba(229, 62, 62, 0.2);
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  animation: errorCircle 0.8s ease-out forwards;
+}
+
+@keyframes errorCircle {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+  }
+}
+
+/* Error particles */
+.error-particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background-color: #e53e3e;
+  border-radius: 50%;
+  animation: errorParticle 0.8s ease-out forwards;
+}
+
+@keyframes errorParticle {
+  0% {
+    transform: translate(0, 0) scale(0);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(calc(var(--x) * 40px), calc(var(--y) * 40px)) scale(0);
+    opacity: 0;
+  }
+}

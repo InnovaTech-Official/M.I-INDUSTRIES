@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>InnovaTech Dashboard - Reports</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter&family=Poppins:wght@700&display=swap" rel="stylesheet" />
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="../../assets/css/dashboard/dashboard.css">
+    <link rel="stylesheet" href="../../assets/css/dashboard/reports.css">
+</head>
+
+<body>
+
+    <nav role="navigation" aria-label="Dashboard Navigation">
+        <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="nav-left">
+            <button class="nav-btn" data-section="home">
+                <i class="fas fa-home"></i> Home
+            </button>
+            <button class="nav-btn" data-section="customer">Customer</button>
+            <button class="nav-btn" data-section="vendor">Vendor</button>
+            <button class="nav-btn" data-section="sale">Sale</button>
+            <button class="nav-btn" data-section="purchase">Purchase</button>
+            <button class="nav-btn" data-section="salereturn">Sale Return</button>
+            <button class="nav-btn" data-section="purchasereturn">Purchase Return</button>
+            <button class="nav-btn" data-section="bom">BOM</button>
+            <button class="nav-btn" data-section="bomlist">BOM List</button>
+            <button class="nav-btn" data-section="extraction">Extraction</button>
+            <button class="nav-btn" data-section="receivevoucher">Receive Voucher</button>
+            <button class="nav-btn" data-section="paymentvoucher">Payment Voucher</button>
+            <button class="nav-btn" data-section="expensevoucher">Expense Voucher</button>
+            <button class="nav-btn" data-section="journalvoucher">Journal Voucher</button>
+            <button class="nav-btn" data-section="setup">Setup</button>
+            <button class="nav-btn" data-section="reports">Reports</button>
+            <button class="nav-btn" data-section="hr">HR</button>
+            <button class="nav-btn" data-section="settings">Settings</button>
+            <button id="logout-btn">Logout</button>
+        </div>
+    </nav>
+
+    <section class="content" id="content-area">
+        <div class="reports-container">
+            <div class="reports-header">
+                <h1>Business Reports</h1>
+                <p class="reports-subtitle">Access and analyze your business data with interactive reports</p>
+            </div>
+
+            <div class="reports-filters">
+                <div class="report-actions">
+                    <div class="search-input">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="report-search" placeholder="Search reports...">
+                    </div>
+                </div>
+
+                <div class="report-categories">
+                    <button class="category-tab active" data-category="all">All Reports</button>
+                    <button class="category-tab" data-category="financial">Financial</button>
+                    <button class="category-tab" data-category="sales">Sales</button>
+                    <button class="category-tab" data-category="inventory">Inventory</button>
+                    <button class="category-tab" data-category="customer">Customer</button>
+                    <button class="category-tab" data-category="vendor">Vendor</button>
+                    <button class="category-tab" data-category="hr">HR & Payroll</button>
+                </div>
+            </div>
+
+            <div class="reports-grid" id="reports-grid">
+                <!-- Financial Reports -->
+                <div class="report-card" data-category="financial">
+                    <div class="report-header">
+                        <div class="report-icon">
+                            <i class="fas fa-chart-pie"></i>
+                        </div>
+                        <h3>Profit & Loss Statement</h3>
+                    </div>
+                    <div class="report-body">
+                        <div class="report-description">
+                            Shows your business income, expenses, and net profit over a selected period.
+                        </div>
+                        <div class="report-tags">
+                            <span class="report-tag">Financial</span>
+                            <span class="report-tag">Accounting</span>
+                        </div>
+                        <div class="report-actions">
+                            <button class="report-btn view-report" data-report="profit-loss">
+                                <i class="fas fa-eye"></i> View Report
+                            </button>
+                            <div class="report-options">
+                                <button class="options-btn">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                                <div class="options-menu">
+                                    <div class="option-item">
+                                        <i class="fas fa-star"></i> Add to Favorites
+                                    </div>
+                                    <div class="option-item">
+                                        <i class="fas fa-download"></i> Download
+                                    </div>
+                                    <div class="option-item">
+                                        <i class="fas fa-print"></i> Print
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="report-card" data-category="financial">
+                    <div class="report-header">
+                        <div class="report-icon">
+                            <i class="fas fa-balance-scale"></i>
+                        </div>
+                        <h3>Balance Sheet</h3>
+                    </div>
+                    <div class="report-body">
+                        <div class="report-description">
+                            Summarizes your company's assets, liabilities, and equity at a specific point in time.
+                        </div>
+                        <div class="report-tags">
+                            <span class="report-tag">Financial</span>
+                            <span class="report-tag">Accounting</span>
+                        </div>
+                        <div class="report-actions">
+                            <button class="report-btn view-report" data-report="balance-sheet">
+                                <i class="fas fa-eye"></i> View Report
+                            </button>
+                            <div class="report-options">
+                                <button class="options-btn">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                                <div class="options-menu">
+                                    <div class="option-item">
+                                        <i class="fas fa-star"></i> Add to Favorites
+                                    </div>
+                                    <div class="option-item">
+                                        <i class="fas fa-download"></i> Download
+                                    </div>
+                                    <div class="option-item">
+                                        <i class="fas fa-print"></i> Print
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="report-card" data-category="financial">
+                    <div class="report-header">
+                        <div class="report-icon">
+                            <i class="fas fa-money-bill-wave"></i>
+                        </div>
+                        <h3>Cash Flow Statement</h3>
+                    </div>
+                    <div class="report-body">
+                        <div class="report-description">
+                            Tracks the flow of cash in and out of your business over a specific period.
+                        </div>
+                        <div class="report-tags">
+                            <span class="report-tag">Financial</span>
+                            <span class="report-tag">Cash</span>
+                        </div>
+                        <div class="report-actions">
+                            <button class="report-btn view-report" data-report="cash-flow">
+                                <i class="fas fa-eye"></i> View Report
+                            </button>
+                            <div class="report-options">
+                                <button class="options-btn">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                                <div class="options-menu">
+                                    <div class="option-item">
+                                        <i class="fas fa-star"></i> Add to Favorites
+                                    </div>
+                                    <div class="option-item">
+                                        <i class="fas fa-download"></i> Download
+                                    </div>
+                                    <div class="option-item">
+                                        <i class="fas fa-print"></i> Print
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sales Reports -->
+                <div class="report-card" data-category="sales">
+                    <div class="report-header">
+                        <div class="report-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Sales Analysis</h3>
+                    </div>
+                    <div class="report-body">
+                        <div class="report-description">
+                            Detailed breakdown of sales by product, customer, region, or time period.
+                        </div>
+                        <div class="report-tags">
+                            <span class="report-tag">Sales</span>
+                            <span class="report-tag">Analysis</span>
+                        </div>
+                        <div class="report-actions">
+                            <button class="report-btn view-report" data-report="sales-analysis">
+                                <i class="fas fa-eye"></i> View Report
+                            </button>
+                            <div class="report-options">
+                                <button class="options-btn">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                                <div class="options-menu">
+                                    <div class="option-item">
+                                        <i class="fas fa-star"></i> Add to Favorites
+                                    </div>
+                                    <div class="option-item">
+                                        <i class="fas fa-download"></i> Download
+                                    </div>
+                                    <div class="option-item">
+                                        <i class="fas fa-print"></i> Print
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="report-card" data-category="sales">
+                    <div class="report-header">
+                        <div class="report-icon">
+                            <i class="fas fa-funnel-dollar"></i>
+                        </div>
+                        <h3>Sales Funnel</h3>
+                    </div>
+                    <div class="report-body">
+                        <div class="report-description">
+                            Visualizes your sales process from leads to closed deals with conversion rates.
+                        </div>
+                        <div class="report-tags">
+                            <span class="report-tag">Sales</span>
+                            <span class="report-tag">Marketing</span>
+                        </div>
+                        <div class="report-actions">
+                            <button class="report-btn view-report" data-report="sales-funnel">
+                                <i class="fas fa-eye"></i> View Report
+                            </button>
+                            <div class="report-options">
+                                <button class="options-btn">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                                <div class="options-menu">
+                                    <div class="option-item">
+                                        <i class="fas fa-star"></i> Add to Favorites
+                                    </div>
+                                    <div class="option-item">
+                                        <i class="fas fa-download"></i> Download
+                                    </div>
+                                    <div class="option-item">
+                                        <i class="fas fa-print"></i> Print
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="report-card" data-category="sales">
+                    <div class="report-header">
+                        <div class="report-icon">
+                            <i class="fas fa-hand-holding-usd"></i>
+                        </div>
+                        <h3>Commission Report</h3>
+                    </div>
+                    <div class="report-body">
+                        <div class="report-description">
+                            Calculate sales commissions for your team based on performance and targets.
+                        </div>
+                        <div class="report-tags">
+                            <span class="report-tag">Sales</span>
+                            <span class="report-tag">HR</span>
+                        </div>
+                        <div class="report-actions">
+                            <button class="report-btn view-report" data-report="commission">
+                                <i class="fas fa-eye"></i> View Report
+                            </button>
+                            <div class="report-options">
+                                <button class="options-btn">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                                <div class="options-menu">
+                                    <div class="option-item">
+                                        <i class="fas fa-star"></i> Add to Favorites
+                                    </div>
+                                    <div class="option-item">
+                                        <i class="fas fa-download"></i> Download
+                                    </div>
+                                    <div class="option-item">
+                                        <i class="fas fa-print"></i> Print
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Inventory Reports -->
+                <div class="report-card" data-category="inventory">
+                    <div class="report-header">
+                        <div class="report-icon">
+                            <i class="fas fa-boxes"></i>
+                        </div>
+                        <h3>Inventory Valuation</h3>
+                    </div>
+                    <div class="report-body">
+                        <div class="report-description">
+                            Current value of your inventory using various valuation methods (FIFO, LIFO, etc.).
+                        </div>
+                        <div class="report-tags">
+                            <span class="report-tag">Inventory</span>
+                            <span class="report-tag">Financial</span>
+                        </div>
+                        <div class="report-actions">
+                            <button class="report-btn view-report" data-report="inventory-valuation">
+                                <i class="fas fa-eye"></i> View Report
+                            </button>
+                            <div class="report-options">
+                                <button class="options-btn">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                                <div class="options-menu">
+                                    <div class="option-item">
+                                        <i class="fas fa-star"></i> Add to Favorites
+                                    </div>
+                                    <div class="option-item">
+                                        <i class="fas fa-download"></i> Download
+                                    </div>
+                                    <div class="option-item">
+                                        <i class="fas fa-print"></i> Print
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="report-card" data-category="inventory">
+                    <div class="report-header">
+                        <div class="report-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <h3>Low Stock Alert</h3>
+                    </div>
+                    <div class="report-body">
+                        <div class="report-description">
+                            Identifies products that are below reorder levels and need to be restocked.
+                        </div>
+                        <div class="report-tags">
+                            <span class="report-tag">Inventory</span>
+                            <span class="report-tag">Alerts</span>
+                        </div>
+                        <div class="report-actions">
+                            <button class="report-btn view-report" data-report="low-stock">
+                                <i class="fas fa-eye"></i> View Report
+                            </button>
+                            <div class="report-options">
+                                <button class="options-btn">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                                <div class="options-menu">
+                                    <div class="option-item">
+                                        <i class="fas fa-star"></i> Add to Favorites
+                                    </div>
+                                    <div class="option-item">
+                                        <i class="fas fa-download"></i> Download
+                                    </div>
+                                    <div class="option-item">
+                                        <i class="fas fa-print"></i> Print
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="report-card" data-category="inventory">
+                    <div class="report-header">
+                        <div class="report-icon">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <h3>Inventory Turnover</h3>
+                    </div>
+                    <div class="report-body">
+                        <div class="report-description">
+                            Analyzes how quickly your inventory sells, showing the efficiency of inventory management.
+                        </div>
+                        <div class="report-tags">
+                            <span class="report-tag">Inventory</span>
+                            <span class="report-tag">Analysis</span>
+                        </div>
+                        <div class="report-actions">
+                            <button class="report-btn view-report" data-report="inventory-turnover">
+                                <i class="fas fa-eye"></i> View Report
+                            </button>
+                            <div class="report-options">
+                                <button class="options-btn">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                                <div class="options-menu">
+                                    <div class="option-item">
+                                        <i class="fas fa-star"></i> Add to Favorites
+                                    </div>
+                                    <div class="option-item">
+                                        <i class="fas fa-download"></i> Download
+                                    </div>
+                                    <div class="option-item">
+                                        <i class="fas fa-print"></i> Print
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Customer Reports -->
+                <div class="report-card" data-category="customer">
+                    <div class="report-header">
+                        <div class="report-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Customer Insights</h3>
+                    </div>
+                    <div class="report-body">
+                        <div class="report-description">
+                            Analyze customer purchasing behavior, preferences, and demographic data.
+                        </div>
+                        <div class="report-tags">
+                            <span class="report-tag">Customer</span>
+                            <span class="report-tag">Analysis</span>
+                        </div>
+                        <div class="report-actions">
+                            <button class="report-btn view-report" data-report="customer-insights">
+                                <i class="fas fa-eye"></i> View Report
+                            </button>
+                            <div class="report-options">
+                                <button class="options-btn">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                                <div class="options-menu">
+                                    <div class="option-item">
+                                        <i class="fas fa-star"></i> Add to Favorites
+                                    </div>
+                                    <div class="option-item">
+                                        <i class="fas fa-download"></i> Download
+                                    </div>
+                                    <div class="option-item">
+                                        <i class="fas fa-print"></i> Print
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="report-card" data-category="customer">
+                    <div class="report-header">
+                        <div class="report-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3>Customer Loyalty</h3>
+                    </div>
+                    <div class="report-body">
+                        <div class="report-description">
+                            Track customer retention, repeat purchase rates, and customer lifetime value.
+                        </div>
+                        <div class="report-tags">
+                            <span class="report-tag">Customer</span>
+                            <span class="report-tag">Marketing</span>
+                        </div>
+                        <div class="report-actions">
+                            <button class="report-btn view-report" data-report="customer-loyalty">
+                                <i class="fas fa-eye"></i> View Report
+                            </button>
+                            <div class="report-options">
+                                <button class="options-btn">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                                <div class="options-menu">
+                                    <div class="option-item">
+                                        <i class="fas fa-star"></i> Add to Favorites
+                                    </div>
+                                    <div class="option-item">
+                                        <i class="fas fa-download"></i> Download
+                                    </div>
+                                    <div class="option-item">
+                                        <i class="fas fa-print"></i> Print
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vendor Reports -->
+                <div class="report-card" data-category="vendor">
+                    <div class="report-header">
+                        <div class="report-icon">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <h3>Vendor Performance</h3>
+                    </div>
+                    <div class="report-body">
+                        <div class="report-description">
+                            Evaluate vendors based on pricing, delivery times, quality, and reliability.
+                        </div>
+                        <div class="report-tags">
+                            <span class="report-tag">Vendor</span>
+                            <span class="report-tag">Purchasing</span>
+                        </div>
+                        <div class="report-actions">
+                            <button class="report-btn view-report" data-report="vendor-performance">
+                                <i class="fas fa-eye"></i> View Report
+                            </button>
+                            <div class="report-options">
+                                <button class="options-btn">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                                <div class="options-menu">
+                                    <div class="option-item">
+                                        <i class="fas fa-star"></i> Add to Favorites
+                                    </div>
+                                    <div class="option-item">
+                                        <i class="fas fa-download"></i> Download
+                                    </div>
+                                    <div class="option-item">
+                                        <i class="fas fa-print"></i> Print
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="report-card" data-category="vendor">
+                    <div class="report-header">
+                        <div class="report-icon">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                        </div>
+                        <h3>Purchase Summary</h3>
+                    </div>
+                    <div class="report-body">
+                        <div class="report-description">
+                            Detailed breakdown of purchases by vendor, category, or time period.
+                        </div>
+                        <div class="report-tags">
+                            <span class="report-tag">Vendor</span>
+                            <span class="report-tag">Purchasing</span>
+                        </div>
+                        <div class="report-actions">
+                            <button class="report-btn view-report" data-report="purchase-summary">
+                                <i class="fas fa-eye"></i> View Report
+                            </button>
+                            <div class="report-options">
+                                <button class="options-btn">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                                <div class="options-menu">
+                                    <div class="option-item">
+                                        <i class="fas fa-star"></i> Add to Favorites
+                                    </div>
+                                    <div class="option-item">
+                                        <i class="fas fa-download"></i> Download
+                                    </div>
+                                    <div class="option-item">
+                                        <i class="fas fa-print"></i> Print
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- HR Reports -->
+                <div class="report-card" data-category="hr">
+                    <div class="report-header">
+                        <div class="report-icon">
+                            <i class="fas fa-user-clock"></i>
+                        </div>
+                        <h3>Attendance & Time Tracking</h3>
+                    </div>
+                    <div class="report-body">
+                        <div class="report-description">
+                            Monitor employee attendance, punctuality, and work hours.
+                        </div>
+                        <div class="report-tags">
+                            <span class="report-tag">HR</span>
+                            <span class="report-tag">Attendance</span>
+                        </div>
+                        <div class="report-actions">
+                            <button class="report-btn view-report" data-report="attendance">
+                                <i class="fas fa-eye"></i> View Report
+                            </button>
+                            <div class="report-options">
+                                <button class="options-btn">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                                <div class="options-menu">
+                                    <div class="option-item">
+                                        <i class="fas fa-star"></i> Add to Favorites
+                                    </div>
+                                    <div class="option-item">
+                                        <i class="fas fa-download"></i> Download
+                                    </div>
+                                    <div class="option-item">
+                                        <i class="fas fa-print"></i> Print
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="report-card" data-category="hr">
+                    <div class="report-header">
+                        <div class="report-icon">
+                            <i class="fas fa-money-check-alt"></i>
+                        </div>
+                        <h3>Payroll Summary</h3>
+                    </div>
+                    <div class="report-body">
+                        <div class="report-description">
+                            Comprehensive overview of salaries, deductions, bonuses, and benefits.
+                        </div>
+                        <div class="report-tags">
+                            <span class="report-tag">HR</span>
+                            <span class="report-tag">Payroll</span>
+                        </div>
+                        <div class="report-actions">
+                            <button class="report-btn view-report" data-report="payroll">
+                                <i class="fas fa-eye"></i> View Report
+                            </button>
+                            <div class="report-options">
+                                <button class="options-btn">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                                <div class="options-menu">
+                                    <div class="option-item">
+                                        <i class="fas fa-star"></i> Add to Favorites
+                                    </div>
+                                    <div class="option-item">
+                                        <i class="fas fa-download"></i> Download
+                                    </div>
+                                    <div class="option-item">
+                                        <i class="fas fa-print"></i> Print
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Favorite Reports Section -->
+            <div class="reports-favorites">
+                <div class="custom-reports-section">
+                    <div class="section-header">
+                        <h2>Favorite Reports</h2>
+                        <button class="new-report-btn">
+                            <i class="fas fa-plus"></i> Create Custom Report
+                        </button>
+                    </div>
+
+                    <div class="no-reports">
+                        <div class="no-reports-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3>No Favorite Reports Yet</h3>
+                        <p>Add reports to your favorites for quick access by clicking the star icon in the report options</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Report Viewer Modal -->
+    <div id="report-viewer" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="report-title">Report Title</h2>
+                <div class="report-options-bar">
+                    <button id="export-report" class="export-btn">
+                        <i class="fas fa-download"></i> Export
+                    </button>
+                    <button id="print-report" class="print-btn">
+                        <i class="fas fa-print"></i> Print
+                    </button>
+                    <button class="close-modal">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="report-filters">
+                    <div class="filters-title">
+                        <i class="fas fa-filter"></i> Report Filters
+                    </div>
+                    <div class="filter-form">
+                        <div class="filter-group">
+                            <label for="date-range">Date Range</label>
+                            <select id="date-range">
+                                <option value="this-month">This Month</option>
+                                <option value="last-month">Last Month</option>
+                                <option value="this-quarter">This Quarter</option>
+                                <option value="last-quarter">Last Quarter</option>
+                                <option value="this-year" selected>This Year</option>
+                                <option value="last-year">Last Year</option>
+                                <option value="custom">Custom Range</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label for="comparison">Comparison</label>
+                            <select id="comparison">
+                                <option value="none">None</option>
+                                <option value="previous-period">Previous Period</option>
+                                <option value="same-period-last-year">Same Period Last Year</option>
+                                <option value="budget">Budget</option>
+                            </select>
+                        </div>
+                        <div class="filter-group" id="additional-filters">
+                            <!-- Additional filters will be added dynamically based on report type -->
+                        </div>
+                        <div class="filter-actions">
+                            <button class="filter-btn apply-filters">Apply Filters</button>
+                            <button class="filter-btn reset-filters">Reset</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="report-content">
+                    <div class="report-tabs">
+                        <button class="report-tab active" data-tab="chart">Chart</button>
+                        <button class="report-tab" data-tab="table">Table</button>
+                        <button class="report-tab" data-tab="summary">Summary</button>
+                    </div>
+                    <div class="tab-content active" id="chart-tab">
+                        <div class="report-chart">
+                            <canvas id="report-chart-canvas"></canvas>
+                        </div>
+                    </div>
+                    <div class="tab-content" id="table-tab">
+                        <div class="report-table-wrapper">
+                            <table class="report-table" id="report-data-table">
+                                <thead>
+                                    <tr>
+                                        <!-- Table headers will be added dynamically -->
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Table data will be added dynamically -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tab-content" id="summary-tab">
+                        <div id="report-summary">
+                            <!-- Summary content will be added dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../../assets/js/dashboard/dashboard.js"></script>
+    <script src="../../assets/js/dashboard/reports.js"></script>
+</body>
+
+</html>

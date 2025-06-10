@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>InnovaTech Dashboard - Setup</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter&family=Poppins:wght@700&display=swap" rel="stylesheet" />
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="../../assets/css/dashboard/dashboard.css">
+    <link rel="stylesheet" href="../../assets/css/dashboard/setup.css">
+    <script src="../../assets/js/common/navigation.js"></script>
+</head>
+
+<body>
+
+    <nav role="navigation" aria-label="Dashboard Navigation">
+        <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="nav-left">
+            <button class="nav-btn" data-section="home">
+                <i class="fas fa-home"></i> Home
+            </button>
+            <button class="nav-btn" data-section="customer">Customer</button>
+            <button class="nav-btn" data-section="vendor">Vendor</button>
+            <button class="nav-btn" data-section="sale">Sale</button>
+            <button class="nav-btn" data-section="purchase">Purchase</button>
+            <button class="nav-btn" data-section="salereturn">Sale Return</button>
+            <button class="nav-btn" data-section="purchasereturn">Purchase Return</button>
+            <button class="nav-btn" data-section="bom">BOM</button>
+            <button class="nav-btn" data-section="bomlist">BOM List</button>
+            <button class="nav-btn" data-section="extraction">Extraction</button>
+            <button class="nav-btn" data-section="receivevoucher">Receive Voucher</button>
+            <button class="nav-btn" data-section="paymentvoucher">Payment Voucher</button>
+            <button class="nav-btn" data-section="expensevoucher">Expense Voucher</button>
+            <button class="nav-btn" data-section="journalvoucher">Journal Voucher</button>
+            <button class="nav-btn" data-section="setup">Setup</button>
+            <button class="nav-btn" data-section="reports">Reports</button>
+            <button class="nav-btn" data-section="hr">HR</button>
+            <button class="nav-btn" data-section="settings">Settings</button>
+            <button id="logout-btn">Logout</button>
+        </div>
+    </nav>
+
+    <section class="content" id="content-area">
+        <div class="setup-container">
+            <div class="setup-header">
+                <h1>System Setup</h1>
+                <p class="setup-subtitle">Configure system components and business parameters</p>
+            </div>
+
+            <div class="setup-search">
+                <div class="search-input">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="setup-search-input" placeholder="Search setup options...">
+                </div>
+            </div>
+
+            <div class="setup-sections">
+                <!-- Company Section -->
+                <div class="setup-section" id="company-section">
+                    <div class="section-header">
+                        <i class="fas fa-building"></i>
+                        <h2>Company</h2>
+                    </div>
+                    <div class="section-cards">
+                        <div class="setup-card" data-setup="company-info">
+                            <div class="card-icon">
+                                <i class="fas fa-info-circle"></i>
+                            </div>
+                            <div class="card-content">
+                                <h3>Company Information</h3>
+                                <p>Manage company details, logo, and contact information</p>
+                            </div>
+                            <div class="card-action">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                        <div class="setup-card" data-setup="branches">
+                            <div class="card-icon">
+                                <i class="fas fa-code-branch"></i>
+                            </div>
+                            <div class="card-content">
+                                <h3>Branches</h3>
+                                <p>Add and manage company branches and locations</p>
+                            </div>
+                            <div class="card-action">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                        <div class="setup-card" data-setup="departments">
+                            <div class="card-icon">
+                                <i class="fas fa-sitemap"></i>
+                            </div>
+                            <div class="card-content">
+                                <h3>Departments</h3>
+                                <p>Configure organizational departments and structure</p>
+                            </div>
+                            <div class="card-action">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Financial Setup Section -->
+                <div class="setup-section" id="financial-section">
+                    <div class="section-header">
+                        <i class="fas fa-money-bill-wave"></i>
+                        <h2>Financial</h2>
+                    </div>
+                    <div class="section-cards">
+                        <div class="setup-card" data-setup="chart-of-accounts">
+                            <div class="card-icon">
+                                <i class="fas fa-list-ol"></i>
+                            </div>
+                            <div class="card-content">
+                                <h3>Chart of Accounts</h3>
+                                <p>Set up and manage financial account structure</p>
+                            </div>
+                            <div class="card-action">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                        <div class="setup-card" data-setup="fiscal-year">
+                            <div class="card-icon">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                            <div class="card-content">
+                                <h3>Fiscal Year</h3>
+                                <p>Configure financial periods and fiscal calendar</p>
+                            </div>
+                            <div class="card-action">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                        <div class="setup-card" data-setup="tax-config">
+                            <div class="card-icon">
+                                <i class="fas fa-percentage"></i>
+                            </div>
+                            <div class="card-content">
+                                <h3>Tax Configuration</h3>
+                                <p>Set up tax rates, rules and exemptions</p>
+                            </div>
+                            <div class="card-action">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                        <div class="setup-card" data-setup="currencies">
+                            <div class="card-icon">
+                                <i class="fas fa-dollar-sign"></i>
+                            </div>
+                            <div class="card-content">
+                                <h3>Currencies</h3>
+                                <p>Manage currencies and exchange rates</p>
+                            </div>
+                            <div class="card-action">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Inventory Section -->
+                <div class="setup-section" id="inventory-section">
+                    <div class="section-header">
+                        <i class="fas fa-boxes"></i>
+                        <h2>Inventory</h2>
+                    </div>
+                    <div class="section-cards">
+                        <div class="setup-card" data-setup="item-categories">
+                            <div class="card-icon">
+                                <i class="fas fa-tags"></i>
+                            </div>
+                            <div class="card-content">
+                                <h3>Item Categories</h3>
+                                <p>Organize products with custom categories</p>
+                            </div>
+                            <div class="card-action">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                        <div class="setup-card" data-setup="uom">
+                            <div class="card-icon">
+                                <i class="fas fa-balance-scale"></i>
+                            </div>
+                            <div class="card-content">
+                                <h3>Units of Measure</h3>
+                                <p>Define measurement units and conversions</p>
+                            </div>
+                            <div class="card-action">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                        <div class="setup-card" data-setup="warehouses">
+                            <div class="card-icon">
+                                <i class="fas fa-warehouse"></i>
+                            </div>
+                            <div class="card-content">
+                                <h3>Warehouses</h3>
+                                <p>Configure storage locations and zones</p>
+                            </div>
+                            <div class="card-action">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                        <div class="setup-card" data-setup="inventory-policies">
+                            <div class="card-icon">
+                                <i class="fas fa-clipboard-list"></i>
+                            </div>
+                            <div class="card-content">
+                                <h3>Inventory Policies</h3>
+                                <p>Set valuation methods and reorder rules</p>
+                            </div>
+                            <div class="card-action">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sales Setup Section -->
+                <div class="setup-section" id="sales-section">
+                    <div class="section-header">
+                        <i class="fas fa-shopping-cart"></i>
+                        <h2>Sales</h2>
+                    </div>
+                    <div class="section-cards">
+                        <div class="setup-card" data-setup="price-lists">
+                            <div class="card-icon">
+                                <i class="fas fa-tag"></i>
+                            </div>
+                            <div class="card-content">
+                                <h3>Price Lists</h3>
+                                <p>Create and manage product pricing structures</p>
+                            </div>
+                            <div class="card-action">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                        <div class="setup-card" data-setup="discount-rules">
+                            <div class="card-icon">
+                                <i class="fas fa-percent"></i>
+                            </div>
+                            <div class="card-content">
+                                <h3>Discount Rules</h3>
+                                <p>Configure discount schemes and promotions</p>
+                            </div>
+                            <div class="card-action">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                        <div class="setup-card" data-setup="sales-territories">
+                            <div class="card-icon">
+                                <i class="fas fa-map-marked-alt"></i>
+                            </div>
+                            <div class="card-content">
+                                <h3>Sales Territories</h3>
+                                <p>Define geographic sales regions</p>
+                            </div>
+                            <div class="card-action">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- User Management Section -->
+                <div class="setup-section" id="users-section">
+                    <div class="section-header">
+                        <i class="fas fa-users-cog"></i>
+                        <h2>User Management</h2>
+                    </div>
+                    <div class="section-cards">
+                        <div class="setup-card" data-setup="user-roles">
+                            <div class="card-icon">
+                                <i class="fas fa-user-shield"></i>
+                            </div>
+                            <div class="card-content">
+                                <h3>User Roles</h3>
+                                <p>Configure roles and access permissions</p>
+                            </div>
+                            <div class="card-action">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                        <div class="setup-card" data-setup="users">
+                            <div class="card-icon">
+                                <i class="fas fa-user-plus"></i>
+                            </div>
+                            <div class="card-content">
+                                <h3>Users</h3>
+                                <p>Add and manage system users</p>
+                            </div>
+                            <div class="card-action">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                        <div class="setup-card" data-setup="audit-log">
+                            <div class="card-icon">
+                                <i class="fas fa-history"></i>
+                            </div>
+                            <div class="card-content">
+                                <h3>Audit Log</h3>
+                                <p>View system activity and user actions</p>
+                            </div>
+                            <div class="card-action">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- System Section -->
+                <div class="setup-section" id="system-section">
+                    <div class="section-header">
+                        <i class="fas fa-cogs"></i>
+                        <h2>System</h2>
+                    </div>
+                    <div class="section-cards">
+                        <div class="setup-card" data-setup="email-templates">
+                            <div class="card-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="card-content">
+                                <h3>Email Templates</h3>
+                                <p>Customize notification and communication templates</p>
+                            </div>
+                            <div class="card-action">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                        <div class="setup-card" data-setup="workflows">
+                            <div class="card-icon">
+                                <i class="fas fa-project-diagram"></i>
+                            </div>
+                            <div class="card-content">
+                                <h3>Workflows</h3>
+                                <p>Configure business processes and automation</p>
+                            </div>
+                            <div class="card-action">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                        <div class="setup-card" data-setup="integrations">
+                            <div class="card-icon">
+                                <i class="fas fa-plug"></i>
+                            </div>
+                            <div class="card-content">
+                                <h3>Integrations</h3>
+                                <p>Connect with third-party services and APIs</p>
+                            </div>
+                            <div class="card-action">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                        <div class="setup-card" data-setup="backup">
+                            <div class="card-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <div class="card-content">
+                                <h3>Backup & Restore</h3>
+                                <p>Manage system data backup and recovery</p>
+                            </div>
+                            <div class="card-action">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Machine Setup Section -->
+                <div class="setup-section" id="machine-section">
+                    <div class="section-header">
+                        <i class="fas fa-industry"></i>
+                        <h2>Machines</h2>
+                    </div>
+                    <div class="section-cards">
+                        <div class="setup-card" data-setup="machine-types">
+                            <div class="card-icon">
+                                <i class="fas fa-cog"></i>
+                            </div>
+                            <div class="card-content">
+                                <h3>Existing Machines</h3>
+                                <p>Configure different types of machines and equipment</p>
+                            </div>
+                            <div class="card-action">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                        <div class="setup-card" data-setup="machine-register">
+                            <div class="card-icon">
+                                <i class="fas fa-clipboard-list"></i>
+                            </div>
+                            <div class="card-content">
+                                <h3>Machine Register</h3>
+                                <p>Add and manage machines in your inventory</p>
+                            </div>
+                            <div class="card-action">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                        <div class="setup-card" data-setup="maintenance-schedule">
+                            <div class="card-icon">
+                                <i class="fas fa-tools"></i>
+                            </div>
+                            <div class="card-content">
+                                <h3>Maintenance Schedule</h3>
+                                <p>Set up maintenance plans and schedules</p>
+                            </div>
+                            <div class="card-action">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Setup Form Modal -->
+    <div id="setup-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="setup-form-title">Setup Title</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="setup-form-container">
+                    <!-- Dynamic form will be loaded here -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="save-setup" class="primary-btn">Save Changes</button>
+                <button id="cancel-setup" class="secondary-btn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../../assets/js/dashboard/dashboard.js"></script>
+    <script src="../../assets/js/dashboard/setup.js"></script>
+    <script src="../../assets/js/common/navigation.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Production Entry</title>
+    <link rel="stylesheet" href="../../../assets/css/dashboard/dashboard.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter&family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../assets/css/entry/bomList/bomList.css">
+</head>
+
+<body>
+    <nav role="navigation" aria-label="Dashboard Navigation">
+        <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="nav-left">
+            <button class="nav-btn" data-section="home">
+                <i class="fas fa-home"></i> Home
+            </button>
+            <button class="nav-btn" data-section="customer">
+                <i class="fas fa-users"></i> Customer
+            </button>
+            <button class="nav-btn" data-section="vendor">
+                <i class="fas fa-building"></i> Vendor
+            </button>
+            <button class="nav-btn" data-section="sale">
+                <i class="fas fa-shopping-cart"></i> Sale
+            </button>
+            <button class="nav-btn" data-section="purchase">
+                <i class="fas fa-truck"></i> Purchase
+            </button>
+            <button class="nav-btn" data-section="salereturn">
+                <i class="fas fa-undo"></i> Sale Return
+            </button>
+            <button class="nav-btn" data-section="purchasereturn">
+                <i class="fas fa-undo-alt"></i> Purchase Return
+            </button>
+            <button class="nav-btn" data-section="bom">
+                <i class="fas fa-clipboard-list"></i> BOM
+            </button>
+            <button class="nav-btn active" data-section="bomlist">
+                <i class="fas fa-list"></i> BOM List
+            </button>
+            <button class="nav-btn" data-section="extraction">
+                <i class="fas fa-filter"></i> Extraction
+            </button>
+            <button class="nav-btn" data-section="receivevoucher">
+                <i class="fas fa-file-invoice-dollar"></i> Receive Voucher
+            </button>
+            <button class="nav-btn" data-section="paymentvoucher">
+                <i class="fas fa-money-check"></i> Payment Voucher
+            </button>
+            <button class="nav-btn" data-section="expensevoucher">
+                <i class="fas fa-receipt"></i> Expense Voucher
+            </button>
+            <button class="nav-btn" data-section="journalvoucher">
+                <i class="fas fa-book"></i> Journal Voucher
+            </button>
+            <button class="nav-btn" data-section="setup">
+                <i class="fas fa-cogs"></i> Setup
+            </button>
+            <button class="nav-btn" data-section="reports">
+                <i class="fas fa-chart-bar"></i> Reports
+            </button>
+            <button class="nav-btn" data-section="hr">
+                <i class="fas fa-user-tie"></i> HR
+            </button>
+            <button class="nav-btn" data-section="settings">
+                <i class="fas fa-cog"></i> Settings
+            </button>
+            <button id="logout-btn">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h2>Production Entry</h2>
+
+        <!-- Search Section -->
+        <div class="search-container">
+            <div class="search-row">
+                <div class="search-field">
+                    <label for="search-job">Job No:</label>
+                    <input type="text" id="search-job" placeholder="Enter Job No">
+                </div>
+                <div class="search-field">
+                    <label for="search-machine">Machine No:</label>
+                    <input type="text" id="search-machine" placeholder="Enter Machine No">
+                </div>
+                <div class="search-field">
+                    <label for="search-finished-good">Finished Good:</label>
+                    <input type="text" id="search-finished-good" placeholder="Enter Finished Good">
+                </div>
+            </div>
+            <div class="search-row">
+                <div class="search-field">
+                    <label for="search-status">Status:</label>
+                    <select id="search-status">
+                        <option value="">All</option>
+                        <option value="Completed">Completed</option>
+                        <option value="Processing">Processing</option>
+                        <option value="Cancelled">Cancelled</option>
+                    </select>
+                </div>
+                <div class="search-field">
+                    <label for="search-date-from">Date From:</label>
+                    <input type="date" id="search-date-from">
+                </div>
+                <div class="search-field">
+                    <label for="search-date-to">Date To:</label>
+                    <input type="date" id="search-date-to">
+                </div>
+            </div>
+            <div class="search-buttons">
+                <button id="search-btn">Search</button>
+                <button id="reset-search-btn">Reset</button>
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Job No</th>
+                    <th>Machine No</th>
+                    <th>Finished Good</th>
+                    <th>Total Qty</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>2025-05-26</td>
+                    <td>JOB-001</td>
+                    <td>MC-10</td>
+                    <td>InnovaTech Module</td>
+                    <td>200</td>
+                    <td><span class="status completed">Completed</span></td>
+                    <td class="actions">
+                        <button class="view-btn">View</button>
+                        <img src="https://img.icons8.com/material-outlined/24/000000/edit--v1.png" alt="Edit"
+                            class="edit">
+                        <img src="https://img.icons8.com/material-outlined/24/000000/delete-forever.png" alt="Delete"
+                            class="delete">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>2025-05-25</td>
+                    <td>JOB-002</td>
+                    <td>MC-07</td>
+                    <td>Smart Tracker</td>
+                    <td>150</td>
+                    <td><span class="status in-progress">In Progress</span></td>
+                    <td class="actions">
+                        <button class="view-btn">View</button>
+                        <img src="https://img.icons8.com/material-outlined/24/000000/edit--v1.png" alt="Edit"
+                            class="edit">
+                        <img src="https://img.icons8.com/material-outlined/24/000000/delete-forever.png" alt="Delete"
+                            class="delete">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>2025-05-24</td>
+                    <td>JOB-003</td>
+                    <td>MC-12</td>
+                    <td>Smart Watch Panel</td>
+                    <td>80</td>
+                    <td><span class="status pending">Pending</span></td>
+                    <td class="actions">
+                        <button class="view-btn">View</button>
+                        <img src="https://img.icons8.com/material-outlined/24/000000/edit--v1.png" alt="Edit"
+                            class="edit">
+                        <img src="https://img.icons8.com/material-outlined/24/000000/delete-forever.png" alt="Delete"
+                            class="delete">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="../../../assets/js/common/navigation.js"></script>
+    <script src="../../../assets/js/entry/bomList/bomList.js"></script>
+</body>
+
+</html>

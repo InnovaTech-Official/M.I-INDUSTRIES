@@ -1,0 +1,242 @@
+/* Dashboard CSS - Main Styles */
+
+/* CSS Reset and Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+    background-color: #f7f9fc;
+    min-height: 100vh;
+    display: flex;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+a {
+    text-decoration: none;
+    color: #4361ee;
+}
+
+button {
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Navigation */
+nav {
+    width: 250px;
+    background-color: #ffffff;
+    height: 100vh;
+    position: fixed;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+}
+
+.nav-left {
+    padding: 1.5rem 0;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.nav-btn {
+    padding: 0.75rem 1.5rem;
+    text-align: left;
+    border: none;
+    background: none;
+    color: #5a6474;
+    font-size: 0.95rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    transition: all 0.2s ease;
+}
+
+.nav-btn i {
+    margin-right: 10px;
+    font-size: 1rem;
+}
+
+.nav-btn:hover {
+    background-color: #f6f7fb;
+    color: #4361ee;
+}
+
+.nav-btn.active {
+    background-color: #edf2fe;
+    color: #4361ee;
+    font-weight: 600;
+    border-left: 4px solid #4361ee;
+}
+
+#logout-btn {
+    margin-top: auto;
+    padding: 0.75rem 1.5rem;
+    text-align: left;
+    border: none;
+    background: none;
+    color: #5a6474;
+    font-size: 0.95rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    transition: all 0.2s ease;
+}
+
+#logout-btn:hover {
+    background-color: #ffeeee;
+    color: #e63946;
+}
+
+.mobile-menu-btn {
+    display: none;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 20;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+    color: #333;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Content Area */
+.content {
+    flex: 1;
+    margin-left: 250px;
+    padding: 2rem;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    nav {
+        width: 200px;
+    }
+    
+    .content {
+        margin-left: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+    
+    nav {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+    
+    .nav-left {
+        display: none;
+        padding-top: 4rem;
+    }
+    
+    .nav-left.show {
+        display: flex;
+    }
+    
+    .mobile-menu-btn {
+        display: flex;
+    }
+    
+    .content {
+        margin-left: 0;
+        padding: 1rem;
+    }
+}
+
+/* Utility Classes */
+.flex {
+    display: flex;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.text-sm {
+    font-size: 0.875rem;
+}
+
+.text-lg {
+    font-size: 1.125rem;
+}
+
+.font-bold {
+    font-weight: 700;
+}
+
+.text-gray {
+    color: #6c757d;
+}
+
+.text-primary {
+    color: #4361ee;
+}
+
+.bg-white {
+    background-color: #ffffff;
+}
+
+.rounded {
+    border-radius: 0.375rem;
+}
+
+.shadow {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.p-4 {
+    padding: 1rem;
+}
+
+.m-2 {
+    margin: 0.5rem;
+}
+
+.my-2 {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.mt-4 {
+    margin-top: 1rem;
+}
+
+.mb-4 {
+    margin-bottom: 1rem;
+}

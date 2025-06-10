@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title>InnovaTech Dashboard - HR Management</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter&family=Poppins:wght@700&display=swap" rel="stylesheet" />
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="../../assets/css/dashboard/dashboard.css">
+    <link rel="stylesheet" href="../../assets/css/dashboard/hr.css">
+    <script src="../../assets/js/common/navigation.js"></script>
+</head>
+
+<body>
+
+    <nav role="navigation" aria-label="Dashboard Navigation">
+        <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="nav-left">
+            <button class="nav-btn" data-section="home">
+                <i class="fas fa-home"></i> Home
+            </button>
+            <button class="nav-btn" data-section="customer">Customer</button>
+            <button class="nav-btn" data-section="vendor">Vendor</button>
+            <button class="nav-btn" data-section="sale">Sale</button>
+            <button class="nav-btn" data-section="purchase">Purchase</button>
+            <button class="nav-btn" data-section="salereturn">Sale Return</button>
+            <button class="nav-btn" data-section="purchasereturn">Purchase Return</button>
+            <button class="nav-btn" data-section="bom">BOM</button>
+            <button class="nav-btn" data-section="bomlist">BOM List</button>
+            <button class="nav-btn" data-section="extraction">Extraction</button>
+            <button class="nav-btn" data-section="receivevoucher">Receive Voucher</button>
+            <button class="nav-btn" data-section="paymentvoucher">Payment Voucher</button>
+            <button class="nav-btn" data-section="expensevoucher">Expense Voucher</button>
+            <button class="nav-btn" data-section="journalvoucher">Journal Voucher</button>
+            <button class="nav-btn" data-section="setup">Setup</button>
+            <button class="nav-btn" data-section="reports">Reports</button>
+            <button class="nav-btn" data-section="hr">HR</button>
+            <button class="nav-btn" data-section="settings">Settings</button>
+            <button id="logout-btn">Logout</button>
+        </div>
+    </nav>
+
+    <section class="content" id="content-area">
+        <div class="hr-container">
+            <!-- Header Section -->
+            <div class="hr-header">
+                <div class="hr-title">
+                    <h1>Human Resources Management</h1>
+                    <p>Manage employees, departments, leave requests and performance reviews</p>
+                </div>
+                <div class="hr-actions">
+                    <button class="hr-btn primary">
+                        <i class="fas fa-user-plus"></i> Add Employee
+                    </button>
+                    <button class="hr-btn secondary">
+                        <i class="fas fa-file-export"></i> Export
+                    </button>
+                </div>
+            </div>
+
+            <!-- HR Stats -->
+            <div class="hr-stats-grid">
+                <div class="hr-stat-card">
+                    <div class="stat-icon employees">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Total Employees</h3>
+                        <div class="stat-value">124</div>
+                        <div class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i> 5.1%
+                        </div>
+                    </div>
+                </div>
+                <div class="hr-stat-card">
+                    <div class="stat-icon departments">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Departments</h3>
+                        <div class="stat-value">8</div>
+                        <div class="stat-change neutral">
+                            <i class="fas fa-equals"></i> 0%
+                        </div>
+                    </div>
+                </div>
+                <div class="hr-stat-card">
+                    <div class="stat-icon pending">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Pending Requests</h3>
+                        <div class="stat-value">12</div>
+                        <div class="stat-change negative">
+                            <i class="fas fa-arrow-up"></i> 33.3%
+                        </div>
+                    </div>
+                </div>
+                <div class="hr-stat-card">
+                    <div class="stat-icon attendance">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Attendance Rate</h3>
+                        <div class="stat-value">95.8%</div>
+                        <div class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i> 1.2%
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main HR Dashboard Grid -->
+            <div class="hr-dashboard-grid">
+                <!-- Employee Directory -->
+                <div class="hr-card employee-directory">
+                    <div class="card-header">
+                        <h2>Employee Directory</h2>
+                        <div class="card-actions">
+                            <div class="search-container">
+                                <input type="text" placeholder="Search employees..." class="search-input">
+                                <i class="fas fa-search search-icon"></i>
+                            </div>
+                            <div class="dropdown">
+                                <button class="dropdown-btn">
+                                    <span>All Departments</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="dropdown-content">
+                                    <a href="#">All Departments</a>
+                                    <a href="#">Engineering</a>
+                                    <a href="#">Marketing</a>
+                                    <a href="#">Sales</a>
+                                    <a href="#">Finance</a>
+                                    <a href="#">Human Resources</a>
+                                    <a href="#">Operations</a>
+                                    <a href="#">Customer Service</a>
+                                    <a href="#">Research & Development</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="employee-table-container">
+                            <table class="employee-table">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <input type="checkbox" class="select-all-checkbox">
+                                        </th>
+                                        <th>Employee</th>
+                                        <th>Department</th>
+                                        <th>Position</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox" class="employee-checkbox">
+                                        </td>
+                                        <td>
+                                            <div class="employee-info">
+                                                <div class="employee-avatar">
+                                                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Employee">
+                                                </div>
+                                                <div class="employee-details">
+                                                    <div class="employee-name">John Anderson</div>
+                                                    <div class="employee-email">john.anderson@example.com</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>Engineering</td>
+                                        <td>Software Developer</td>
+                                        <td><span class="status-badge active">Active</span></td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="action-btn" title="Edit">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button class="action-btn" title="View">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                <button class="action-btn" title="More">
+                                                    <i class="fas fa-ellipsis-v"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox" class="employee-checkbox">
+                                        </td>
+                                        <td>
+                                            <div class="employee-info">
+                                                <div class="employee-avatar">
+                                                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Employee">
+                                                </div>
+                                                <div class="employee-details">
+                                                    <div class="employee-name">Sarah Johnson</div>
+                                                    <div class="employee-email">sarah.johnson@example.com</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>Marketing</td>
+                                        <td>Marketing Manager</td>
+                                        <td><span class="status-badge active">Active</span></td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="action-btn" title="Edit">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button class="action-btn" title="View">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                <button class="action-btn" title="More">
+                                                    <i class="fas fa-ellipsis-v"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox" class="employee-checkbox">
+                                        </td>
+                                        <td>
+                                            <div class="employee-info">
+                                                <div class="employee-avatar">
+                                                    <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Employee">
+                                                </div>
+                                                <div class="employee-details">
+                                                    <div class="employee-name">Michael Thompson</div>
+                                                    <div class="employee-email">michael.thompson@example.com</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>Sales</td>
+                                        <td>Sales Representative</td>
+                                        <td><span class="status-badge on-leave">On Leave</span></td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="action-btn" title="Edit">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button class="action-btn" title="View">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                <button class="action-btn" title="More">
+                                                    <i class="fas fa-ellipsis-v"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox" class="employee-checkbox">
+                                        </td>
+                                        <td>
+                                            <div class="employee-info">
+                                                <div class="employee-avatar">
+                                                    <img src="https://randomuser.me/api/portraits/women/28.jpg" alt="Employee">
+                                                </div>
+                                                <div class="employee-details">
+                                                    <div class="employee-name">Emily Davis</div>
+                                                    <div class="employee-email">emily.davis@example.com</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>Finance</td>
+                                        <td>Financial Analyst</td>
+                                        <td><span class="status-badge active">Active</span></td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="action-btn" title="Edit">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button class="action-btn" title="View">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                <button class="action-btn" title="More">
+                                                    <i class="fas fa-ellipsis-v"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox" class="employee-checkbox">
+                                        </td>
+                                        <td>
+                                            <div class="employee-info">
+                                                <div class="employee-avatar">
+                                                    <img src="https://randomuser.me/api/portraits/men/23.jpg" alt="Employee">
+                                                </div>
+                                                <div class="employee-details">
+                                                    <div class="employee-name">Daniel Wilson</div>
+                                                    <div class="employee-email">daniel.wilson@example.com</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>Human Resources</td>
+                                        <td>HR Specialist</td>
+                                        <td><span class="status-badge active">Active</span></td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="action-btn" title="Edit">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button class="action-btn" title="View">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                <button class="action-btn" title="More">
+                                                    <i class="fas fa-ellipsis-v"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox" class="employee-checkbox">
+                                        </td>
+                                        <td>
+                                            <div class="employee-info">
+                                                <div class="employee-avatar">
+                                                    <img src="https://randomuser.me/api/portraits/women/56.jpg" alt="Employee">
+                                                </div>
+                                                <div class="employee-details">
+                                                    <div class="employee-name">Olivia Martinez</div>
+                                                    <div class="employee-email">olivia.martinez@example.com</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>Operations</td>
+                                        <td>Operations Manager</td>
+                                        <td><span class="status-badge inactive">Inactive</span></td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="action-btn" title="Edit">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button class="action-btn" title="View">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                <button class="action-btn" title="More">
+                                                    <i class="fas fa-ellipsis-v"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="table-pagination">
+                            <div class="pagination-info">Showing 1-6 of 124 employees</div>
+                            <div class="pagination-controls">
+                                <button class="pagination-btn" disabled>
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <button class="pagination-btn active">1</button>
+                                <button class="pagination-btn">2</button>
+                                <button class="pagination-btn">3</button>
+                                <span class="pagination-ellipsis">...</span>
+                                <button class="pagination-btn">21</button>
+                                <button class="pagination-btn">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Department Breakdown -->
+                <div class="hr-card">
+                    <div class="card-header">
+                        <h2>Department Breakdown</h2>
+                        <div class="card-actions">
+                            <button class="action-link">Manage Departments</button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="department-list">
+                            <div class="department-item">
+                                <div class="department-info">
+                                    <div class="department-name">Engineering</div>
+                                    <div class="department-count">32 employees</div>
+                                </div>
+                                <div class="department-bar-container">
+                                    <div class="department-bar" style="width: 25.8%"></div>
+                                    <div class="department-percent">25.8%</div>
+                                </div>
+                            </div>
+                            <div class="department-item">
+                                <div class="department-info">
+                                    <div class="department-name">Sales</div>
+                                    <div class="department-count">28 employees</div>
+                                </div>
+                                <div class="department-bar-container">
+                                    <div class="department-bar" style="width: 22.6%"></div>
+                                    <div class="department-percent">22.6%</div>
+                                </div>
+                            </div>
+                            <div class="department-item">
+                                <div class="department-info">
+                                    <div class="department-name">Marketing</div>
+                                    <div class="department-count">18 employees</div>
+                                </div>
+                                <div class="department-bar-container">
+                                    <div class="department-bar" style="width: 14.5%"></div>
+                                    <div class="department-percent">14.5%</div>
+                                </div>
+                            </div>
+                            <div class="department-item">
+                                <div class="department-info">
+                                    <div class="department-name">Customer Service</div>
+                                    <div class="department-count">15 employees</div>
+                                </div>
+                                <div class="department-bar-container">
+                                    <div class="department-bar" style="width: 12.1%"></div>
+                                    <div class="department-percent">12.1%</div>
+                                </div>
+                            </div>
+                            <div class="department-item">
+                                <div class="department-info">
+                                    <div class="department-name">Finance</div>
+                                    <div class="department-count">12 employees</div>
+                                </div>
+                                <div class="department-bar-container">
+                                    <div class="department-bar" style="width: 9.7%"></div>
+                                    <div class="department-percent">9.7%</div>
+                                </div>
+                            </div>
+                            <div class="department-item">
+                                <div class="department-info">
+                                    <div class="department-name">Operations</div>
+                                    <div class="department-count">9 employees</div>
+                                </div>
+                                <div class="department-bar-container">
+                                    <div class="department-bar" style="width: 7.3%"></div>
+                                    <div class="department-percent">7.3%</div>
+                                </div>
+                            </div>
+                            <div class="department-item">
+                                <div class="department-info">
+                                    <div class="department-name">Human Resources</div>
+                                    <div class="department-count">6 employees</div>
+                                </div>
+                                <div class="department-bar-container">
+                                    <div class="department-bar" style="width: 4.8%"></div>
+                                    <div class="department-percent">4.8%</div>
+                                </div>
+                            </div>
+                            <div class="department-item">
+                                <div class="department-info">
+                                    <div class="department-name">Research & Development</div>
+                                    <div class="department-count">4 employees</div>
+                                </div>
+                                <div class="department-bar-container">
+                                    <div class="department-bar" style="width: 3.2%"></div>
+                                    <div class="department-percent">3.2%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pending Leave Requests -->
+                <div class="hr-card">
+                    <div class="card-header">
+                        <h2>Pending Leave Requests</h2>
+                        <div class="card-actions">
+                            <button class="action-link">View All</button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="leave-list">
+                            <div class="leave-item">
+                                <div class="leave-employee">
+                                    <div class="employee-avatar">
+                                        <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Employee">
+                                    </div>
+                                    <div class="employee-details">
+                                        <div class="employee-name">Michael Thompson</div>
+                                        <div class="employee-position">Sales Representative</div>
+                                    </div>
+                                </div>
+                                <div class="leave-details">
+                                    <div class="leave-type">Annual Leave</div>
+                                    <div class="leave-dates">June 15 - June 30, 2023</div>
+                                    <div class="leave-duration">15 days</div>
+                                </div>
+                                <div class="leave-actions">
+                                    <button class="leave-btn approve">Approve</button>
+                                    <button class="leave-btn reject">Reject</button>
+                                </div>
+                            </div>
+                            <div class="leave-item">
+                                <div class="leave-employee">
+                                    <div class="employee-avatar">
+                                        <img src="https://randomuser.me/api/portraits/women/28.jpg" alt="Employee">
+                                    </div>
+                                    <div class="employee-details">
+                                        <div class="employee-name">Emily Davis</div>
+                                        <div class="employee-position">Financial Analyst</div>
+                                    </div>
+                                </div>
+                                <div class="leave-details">
+                                    <div class="leave-type">Sick Leave</div>
+                                    <div class="leave-dates">June 18 - June 19, 2023</div>
+                                    <div class="leave-duration">2 days</div>
+                                </div>
+                                <div class="leave-actions">
+                                    <button class="leave-btn approve">Approve</button>
+                                    <button class="leave-btn reject">Reject</button>
+                                </div>
+                            </div>
+                            <div class="leave-item">
+                                <div class="leave-employee">
+                                    <div class="employee-avatar">
+                                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Employee">
+                                    </div>
+                                    <div class="employee-details">
+                                        <div class="employee-name">John Anderson</div>
+                                        <div class="employee-position">Software Developer</div>
+                                    </div>
+                                </div>
+                                <div class="leave-details">
+                                    <div class="leave-type">Personal Leave</div>
+                                    <div class="leave-dates">June 21 - June 22, 2023</div>
+                                    <div class="leave-duration">2 days</div>
+                                </div>
+                                <div class="leave-actions">
+                                    <button class="leave-btn approve">Approve</button>
+                                    <button class="leave-btn reject">Reject</button>
+                                </div>
+                            </div>
+                            <div class="leave-item">
+                                <div class="leave-employee">
+                                    <div class="employee-avatar">
+                                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Employee">
+                                    </div>
+                                    <div class="employee-details">
+                                        <div class="employee-name">Sarah Johnson</div>
+                                        <div class="employee-position">Marketing Manager</div>
+                                    </div>
+                                </div>
+                                <div class="leave-details">
+                                    <div class="leave-type">Family Leave</div>
+                                    <div class="leave-dates">July 5 - July 9, 2023</div>
+                                    <div class="leave-duration">5 days</div>
+                                </div>
+                                <div class="leave-actions">
+                                    <button class="leave-btn approve">Approve</button>
+                                    <button class="leave-btn reject">Reject</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Attendance Overview -->
+                <div class="hr-card">
+                    <div class="card-header">
+                        <h2>Attendance Overview</h2>
+                        <div class="card-actions">
+                            <div class="dropdown">
+                                <button class="dropdown-btn">
+                                    <span>June 2023</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="dropdown-content">
+                                    <a href="#">June 2023</a>
+                                    <a href="#">May 2023</a>
+                                    <a href="#">April 2023</a>
+                                    <a href="#">March 2023</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="attendance-stats">
+                            <div class="attendance-stat-item">
+                                <div class="attendance-value">95.8%</div>
+                                <div class="attendance-label">Present</div>
+                                <div class="attendance-bar-container">
+                                    <div class="attendance-bar present" style="width: 95.8%"></div>
+                                </div>
+                            </div>
+                            <div class="attendance-stat-item">
+                                <div class="attendance-value">2.4%</div>
+                                <div class="attendance-label">Absent</div>
+                                <div class="attendance-bar-container">
+                                    <div class="attendance-bar absent" style="width: 2.4%"></div>
+                                </div>
+                            </div>
+                            <div class="attendance-stat-item">
+                                <div class="attendance-value">1.8%</div>
+                                <div class="attendance-label">Late</div>
+                                <div class="attendance-bar-container">
+                                    <div class="attendance-bar late" style="width: 1.8%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="attendance-chart-container">
+                            <div class="attendance-chart">
+                                <div class="chart-day">
+                                    <div class="day-label">M</div>
+                                    <div class="day-bar-container">
+                                        <div class="day-bar" style="height: 90%"></div>
+                                    </div>
+                                </div>
+                                <div class="chart-day">
+                                    <div class="day-label">T</div>
+                                    <div class="day-bar-container">
+                                        <div class="day-bar" style="height: 95%"></div>
+                                    </div>
+                                </div>
+                                <div class="chart-day">
+                                    <div class="day-label">W</div>
+                                    <div class="day-bar-container">
+                                        <div class="day-bar" style="height: 98%"></div>
+                                    </div>
+                                </div>
+                                <div class="chart-day">
+                                    <div class="day-label">T</div>
+                                    <div class="day-bar-container">
+                                        <div class="day-bar" style="height: 92%"></div>
+                                    </div>
+                                </div>
+                                <div class="chart-day">
+                                    <div class="day-label">F</div>
+                                    <div class="day-bar-container">
+                                        <div class="day-bar" style="height: 88%"></div>
+                                    </div>
+                                </div>
+                                <div class="chart-day weekend">
+                                    <div class="day-label">S</div>
+                                    <div class="day-bar-container">
+                                        <div class="day-bar" style="height: 40%"></div>
+                                    </div>
+                                </div>
+                                <div class="chart-day weekend">
+                                    <div class="day-label">S</div>
+                                    <div class="day-bar-container">
+                                        <div class="day-bar" style="height: 35%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="attendance-legend">
+                                <div class="legend-item">
+                                    <div class="legend-color present"></div>
+                                    <div class="legend-label">Present</div>
+                                </div>
+                                <div class="legend-item">
+                                    <div class="legend-color absent"></div>
+                                    <div class="legend-label">Absent</div>
+                                </div>
+                                <div class="legend-item">
+                                    <div class="legend-color late"></div>
+                                    <div class="legend-label">Late</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activities -->
+                <div class="hr-card">
+                    <div class="card-header">
+                        <h2>Recent HR Activities</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="activity-timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-icon add-employee">
+                                    <i class="fas fa-user-plus"></i>
+                                </div>
+                                <div class="timeline-content">
+                                    <div class="timeline-title">New Employee Added</div>
+                                    <div class="timeline-desc">Robert Chen joined as UX Designer in the Engineering department</div>
+                                    <div class="timeline-time">Today, 10:45 AM</div>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-icon leave">
+                                    <i class="fas fa-calendar-alt"></i>
+                                </div>
+                                <div class="timeline-content">
+                                    <div class="timeline-title">Leave Request Approved</div>
+                                    <div class="timeline-desc">Approved Michael Thompson's annual leave request</div>
+                                    <div class="timeline-time">Today, 9:20 AM</div>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-icon salary">
+                                    <i class="fas fa-money-bill-wave"></i>
+                                </div>
+                                <div class="timeline-content">
+                                    <div class="timeline-title">Salary Review Completed</div>
+                                    <div class="timeline-desc">Completed quarterly salary review for Engineering department</div>
+                                    <div class="timeline-time">Yesterday, 4:15 PM</div>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-icon position">
+                                    <i class="fas fa-briefcase"></i>
+                                </div>
+                                <div class="timeline-content">
+                                    <div class="timeline-title">Position Change</div>
+                                    <div class="timeline-desc">Sarah Johnson promoted from Marketing Specialist to Marketing Manager</div>
+                                    <div class="timeline-time">Yesterday, 2:30 PM</div>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-icon document">
+                                    <i class="fas fa-file-alt"></i>
+                                </div>
+                                <div class="timeline-content">
+                                    <div class="timeline-title">Policy Update</div>
+                                    <div class="timeline-desc">Updated company remote work policy document</div>
+                                    <div class="timeline-time">June 15, 2023</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Access -->
+                <div class="hr-card">
+                    <div class="card-header">
+                        <h2>Quick Access</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="quick-access-grid">
+                            <a href="#" class="quick-access-item">
+                                <div class="quick-access-icon">
+                                    <i class="fas fa-user-plus"></i>
+                                </div>
+                                <div class="quick-access-label">Add Employee</div>
+                            </a>
+                            <a href="#" class="quick-access-item">
+                                <div class="quick-access-icon">
+                                    <i class="fas fa-calendar-alt"></i>
+                                </div>
+                                <div class="quick-access-label">Leave Management</div>
+                            </a>
+                            <a href="#" class="quick-access-item">
+                                <div class="quick-access-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div class="quick-access-label">Attendance</div>
+                            </a>
+                            <a href="#" class="quick-access-item">
+                                <div class="quick-access-icon">
+                                    <i class="fas fa-money-check-alt"></i>
+                                </div>
+                                <div class="quick-access-label">Payroll</div>
+                            </a>
+                            <a href="#" class="quick-access-item">
+                                <div class="quick-access-icon">
+                                    <i class="fas fa-building"></i>
+                                </div>
+                                <div class="quick-access-label">Departments</div>
+                            </a>
+                            <a href="#" class="quick-access-item">
+                                <div class="quick-access-icon">
+                                    <i class="fas fa-chart-pie"></i>
+                                </div>
+                                <div class="quick-access-label">Reports</div>
+                            </a>
+                            <a href="#" class="quick-access-item">
+                                <div class="quick-access-icon">
+                                    <i class="fas fa-file-alt"></i>
+                                </div>
+                                <div class="quick-access-label">Documents</div>
+                            </a>
+                            <a href="#" class="quick-access-item">
+                                <div class="quick-access-icon">
+                                    <i class="fas fa-cog"></i>
+                                </div>
+                                <div class="quick-access-label">Settings</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="../../assets/js/dashboard/dashboard.js"></script>
+    <script src="../../assets/js/dashboard/hr.js"></script>
+</body>
+
+</html>

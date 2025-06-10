@@ -1,0 +1,166 @@
+/* Factory Machine Animations for Extreme Realism */
+
+/* Gear Rotation Animations */
+@keyframes largeGearRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes smallGearRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(-360deg); }
+}
+
+/* Conveyor Belt Movement */
+@keyframes conveyorMove {
+  0% { background-position: 0 0; }
+  100% { background-position: -12px 0; }
+}
+
+/* Belt Items Movement */
+@keyframes itemMove {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+@keyframes newItemAppear {
+  0% { transform: translateX(100%) scale(0.8); opacity: 0; }
+  20% { transform: translateX(100%) scale(1); opacity: 1; }
+  100% { transform: translateX(0) scale(1); opacity: 1; }
+}
+
+/* Control Panel Lights Blinking */
+@keyframes lightBlink {
+  0%, 49% { opacity: 0.3; box-shadow: 0 0 2px rgba(255, 255, 255, 0.3); }
+  50%, 100% { opacity: 1; box-shadow: 0 0 8px rgba(255, 255, 255, 0.8); }
+}
+
+@keyframes redLightBlink {
+  0%, 49% { background-color: #300; box-shadow: 0 0 2px rgba(255, 0, 0, 0.3); }
+  50%, 100% { background-color: #f00; box-shadow: 0 0 8px rgba(255, 0, 0, 0.8); }
+}
+
+@keyframes yellowLightBlink {
+  0%, 49% { background-color: #330; box-shadow: 0 0 2px rgba(255, 255, 0, 0.3); }
+  50%, 100% { background-color: #ff0; box-shadow: 0 0 8px rgba(255, 255, 0, 0.8); }
+}
+
+@keyframes greenLightBlink {
+  0%, 49% { background-color: #030; box-shadow: 0 0 2px rgba(0, 255, 0, 0.3); }
+  50%, 100% { background-color: #0f0; box-shadow: 0 0 8px rgba(0, 255, 0, 0.8); }
+}
+
+/* Screen Display Animation */
+@keyframes screenGlow {
+  0% { box-shadow: inset 0 0 3px rgba(0, 255, 200, 0.2); }
+  50% { box-shadow: inset 0 0 8px rgba(0, 255, 200, 0.5); }
+  100% { box-shadow: inset 0 0 3px rgba(0, 255, 200, 0.2); }
+}
+
+/* Knob Adjustment Animation */
+@keyframes knobTurn {
+  0% { transform: rotate(0deg); }
+  30% { transform: rotate(90deg); }
+  60% { transform: rotate(70deg); }
+  100% { transform: rotate(80deg); }
+}
+
+/* Machine Vibration Animation */
+@keyframes machineVibrate {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  10% { transform: translate(-0.5px, 0.5px) rotate(-0.1deg); }
+  20% { transform: translate(0.5px, -0.5px) rotate(0.1deg); }
+  30% { transform: translate(-0.5px, -0.5px) rotate(0deg); }
+  40% { transform: translate(0.5px, 0.5px) rotate(0.1deg); }
+  50% { transform: translate(-0.5px, 0.5px) rotate(-0.1deg); }
+  60% { transform: translate(-0.5px, -0.5px) rotate(0deg); }
+  70% { transform: translate(0.5px, 0.5px) rotate(0.1deg); }
+  80% { transform: translate(-0.5px, -0.5px) rotate(-0.1deg); }
+  90% { transform: translate(0.5px, -0.5px) rotate(0deg); }
+}
+
+/* Output Item Production Animation */
+@keyframes itemProduction {
+  0%, 80% { transform: translateY(-100%) scale(0.8); opacity: 0; }
+  85% { transform: translateY(-50%) scale(0.9); opacity: 0.5; }
+  90% { transform: translateY(0) scale(1); opacity: 1; }
+  95% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(20%) scale(1); opacity: 0; }
+}
+
+/* Apply Animations to Machine Elements */
+.factory-machine.running .large-gear {
+  animation: largeGearRotate 4s linear infinite;
+  transform-origin: center center;
+}
+
+.factory-machine.running .small-gear {
+  animation: smallGearRotate 3s linear infinite;
+  transform-origin: center center;
+}
+
+.factory-machine.running .conveyor-surface {
+  animation: conveyorMove 2s linear infinite;
+  background-size: 12px 100%;
+}
+
+.factory-machine.running .belt-item {
+  animation: itemMove 6s linear infinite;
+}
+
+.factory-machine.running .item1 {
+  animation-delay: -2s;
+}
+
+.factory-machine.running .item2 {
+  animation-delay: -4s;
+}
+
+.factory-machine.running .item3 {
+  animation-delay: 0s;
+}
+
+.factory-machine.running .green-light {
+  animation: greenLightBlink 2s ease-in-out infinite;
+}
+
+.factory-machine.running .yellow-light {
+  animation: yellowLightBlink 4s ease-in-out infinite;
+}
+
+.factory-machine.running .panel-screen {
+  animation: screenGlow 3s ease-in-out infinite;
+}
+
+.factory-machine.running .knob:first-child {
+  animation: knobTurn 10s ease-in-out infinite;
+  transform-origin: center center;
+}
+
+.factory-machine.running {
+  animation: machineVibrate 0.1s linear infinite;
+}
+
+/* Add a produced item in the output chute */
+.factory-machine.running .chute-opening::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 12px;
+  background-color: #a5c9ca;
+  border-radius: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  animation: itemProduction 4s ease-in-out infinite;
+}
+
+/* Man-Machine Interaction States */
+.factory-machine.idle {
+  opacity: 0.9;
+}
+
+.factory-machine.running {
+  opacity: 1;
+}

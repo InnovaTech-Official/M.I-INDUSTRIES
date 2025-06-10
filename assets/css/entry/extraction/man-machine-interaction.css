@@ -1,0 +1,359 @@
+/* 
+ * Man-Machine Interaction Animation
+ * This file contains animations for the man to approach the machine, interact with it,
+ * and receive items when the Total Qty changes
+ */
+
+/* Animation variables */
+:root {
+  --animation-duration: 4s;
+  --machine-position-x: 180px;
+  --original-man-position: 0px;
+  --step-duration: 0.3s;
+  --machine-button-position-x: 200px;
+  --machine-button-position-y: 80px;
+}
+
+/* Man movement animation towards machine */
+@keyframes walkToMachine {
+  0% {
+    transform: translateX(var(--original-man-position)) translateY(0px);
+  }
+  10% {
+    transform: translateX(calc(var(--machine-position-x) * 0.2)) translateY(-2px);
+  }
+  20% {
+    transform: translateX(calc(var(--machine-position-x) * 0.4)) translateY(0px);
+  }
+  30% {
+    transform: translateX(calc(var(--machine-position-x) * 0.6)) translateY(-2px);
+  }
+  40% {
+    transform: translateX(calc(var(--machine-position-x) * 0.8)) translateY(0px);
+  }
+  45%, 80% {
+    transform: translateX(var(--machine-position-x)) translateY(0px);
+  }
+  85% {
+    transform: translateX(calc(var(--machine-position-x) * 0.8)) translateY(-2px);
+  }
+  90% {
+    transform: translateX(calc(var(--machine-position-x) * 0.6)) translateY(0px);
+  }
+  95% {
+    transform: translateX(calc(var(--machine-position-x) * 0.3)) translateY(-2px);
+  }
+  100% {
+    transform: translateX(var(--original-man-position)) translateY(0px);
+  }
+}
+
+/* Right arm reaching animation for button press */
+@keyframes reachForButton {
+  0%, 40% {
+    transform: rotate(-5deg);
+  }
+  45%, 50% {
+    transform: rotate(-45deg) translateX(10px) translateY(-15px);
+  }
+  55%, 60% {
+    transform: rotate(-30deg) translateX(5px) translateY(-10px);
+  }
+  65%, 70% {
+    transform: rotate(-45deg) translateX(10px) translateY(-15px);
+  }
+  75%, 80% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(-5deg);
+  }
+}
+
+/* Right hand animation for button press */
+@keyframes pressButton {
+  0%, 40% {
+    transform: rotate(5deg) scale(1);
+  }
+  45%, 50% {
+    transform: rotate(30deg) scale(0.9);
+  }
+  55%, 60% {
+    transform: rotate(15deg) scale(1);
+  }
+  65%, 70% {
+    transform: rotate(30deg) scale(0.9);
+  }
+  75%, 80% {
+    transform: rotate(5deg) scale(1);
+  }
+  100% {
+    transform: rotate(5deg) scale(1);
+  }
+}
+
+/* Left arm reaching animation for item retrieval */
+@keyframes reachForItem {
+  0%, 60% {
+    transform: rotate(5deg);
+  }
+  65%, 70% {
+    transform: rotate(45deg) translateX(-10px) translateY(-5px);
+  }
+  75%, 80% {
+    transform: rotate(5deg);
+  }
+  100% {
+    transform: rotate(5deg);
+  }
+}
+
+/* Left hand animation for item grabbing */
+@keyframes grabMachineItem {
+  0%, 60% {
+    transform: rotate(-5deg) scale(1);
+  }
+  65%, 70% {
+    transform: rotate(15deg) scale(0.9);
+  }
+  75%, 80% {
+    transform: rotate(-5deg) scale(1);
+  }
+  100% {
+    transform: rotate(-5deg) scale(1);
+  }
+}
+
+/* Leg walking animations */
+@keyframes legWalkToMachine {
+  0% { transform: rotate(0deg) translateY(0); }
+  10% { transform: rotate(20deg) translateY(-2px); }
+  20% { transform: rotate(10deg) translateY(-1px); }
+  30% { transform: rotate(0deg) translateY(0); }
+  40% { transform: rotate(-10deg) translateY(0); }
+  45%, 80% { transform: rotate(0deg) translateY(0); }
+  85% { transform: rotate(20deg) translateY(-2px); }
+  90% { transform: rotate(10deg) translateY(-1px); }
+  95% { transform: rotate(0deg) translateY(0); }
+  100% { transform: rotate(0deg) translateY(0); }
+}
+
+/* Opposite leg walking animation */
+@keyframes legWalkToMachineOpposite {
+  0% { transform: rotate(0deg) translateY(0); }
+  10% { transform: rotate(-10deg) translateY(0); }
+  20% { transform: rotate(0deg) translateY(0); }
+  30% { transform: rotate(20deg) translateY(-2px); }
+  40% { transform: rotate(10deg) translateY(-1px); }
+  45%, 80% { transform: rotate(0deg) translateY(0); }
+  85% { transform: rotate(-10deg) translateY(0); }
+  90% { transform: rotate(0deg) translateY(0); }
+  95% { transform: rotate(20deg) translateY(-2px); }
+  100% { transform: rotate(0deg) translateY(0); }
+}
+
+/* Head looking at machine */
+@keyframes headLookAtMachine {
+  0%, 30% { transform: rotate(0deg); }
+  40%, 80% { transform: rotate(10deg); }
+  90%, 100% { transform: rotate(0deg); }
+}
+
+/* Torso slight lean */
+@keyframes torsoLeanToMachine {
+  0%, 30% { transform: rotate(0deg) scale(1); }
+  40%, 80% { transform: rotate(5deg) scale(1.01); }
+  90%, 100% { transform: rotate(0deg) scale(1); }
+}
+
+/* Machine button press effect */
+@keyframes buttonPressed {
+  0%, 44% { transform: scale(1); box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2); }
+  45%, 50% { transform: scale(0.9); box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); }
+  51%, 54% { transform: scale(1); box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2); }
+  55%, 60% { transform: scale(0.9); box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); }
+  61%, 100% { transform: scale(1); box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2); }
+}
+
+/* Machine production animation enhancement */
+@keyframes machineProduceItem {
+  0%, 50% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  55% {
+    transform: scale(0.3);
+    opacity: 0.3;
+  }
+  60% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  65%, 70% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  75% {
+    transform: translateY(50px) scale(1);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(50px) scale(1);
+    opacity: 0;
+  }
+}
+
+/* Machine light flashing during operation */
+@keyframes machineLightFlash {
+  0%, 40% { opacity: 0.3; box-shadow: 0 0 2px rgba(255, 255, 255, 0.3); }
+  45%, 50% { opacity: 1; box-shadow: 0 0 8px rgba(255, 255, 255, 0.8); }
+  55%, 60% { opacity: 0.3; box-shadow: 0 0 2px rgba(255, 255, 255, 0.3); }
+  65%, 70% { opacity: 1; box-shadow: 0 0 8px rgba(255, 255, 255, 0.8); }
+  75%, 100% { opacity: 0.3; box-shadow: 0 0 2px rgba(255, 255, 255, 0.3); }
+}
+
+/* Apply animations when the .machine-interaction class is active */
+.css-man.machine-interaction {
+  animation: walkToMachine var(--animation-duration) ease-in-out;
+}
+
+.css-man.machine-interaction .arm-right {
+  animation: reachForButton var(--animation-duration) ease-in-out;
+}
+
+.css-man.machine-interaction .arm-right .hand {
+  animation: pressButton var(--animation-duration) ease-in-out;
+}
+
+.css-man.machine-interaction .arm-left {
+  animation: reachForItem var(--animation-duration) ease-in-out;
+}
+
+.css-man.machine-interaction .arm-left .hand {
+  animation: grabMachineItem var(--animation-duration) ease-in-out;
+}
+
+.css-man.machine-interaction .leg-left {
+  animation: legWalkToMachine var(--animation-duration) ease-in-out;
+  transform-origin: top center;
+}
+
+.css-man.machine-interaction .leg-right {
+  animation: legWalkToMachineOpposite var(--animation-duration) ease-in-out;
+  transform-origin: top center;
+}
+
+.css-man.machine-interaction .head {
+  animation: headLookAtMachine var(--animation-duration) ease-in-out;
+}
+
+.css-man.machine-interaction .torso {
+  animation: torsoLeanToMachine var(--animation-duration) ease-in-out;
+}
+
+/* Machine interactions */
+.factory-machine.being-operated .button-main {
+  animation: buttonPressed var(--animation-duration) ease-in-out;
+}
+
+.factory-machine.being-operated .light-green {
+  animation: machineLightFlash var(--animation-duration) ease-in-out;
+}
+
+.factory-machine.being-operated .light-yellow {
+  animation: machineLightFlash var(--animation-duration) ease-in-out;
+  animation-delay: 0.2s;
+}
+
+.factory-machine.being-operated .product-item {
+  animation: machineProduceItem var(--animation-duration) ease-in-out;
+}
+
+/* Machine produced item that will be taken by the man */
+.machine-produced-item {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #a5c9ca;
+  border-radius: 4px;
+  opacity: 0;
+  z-index: 100;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Item movement from machine to man's hand animation */
+@keyframes itemToHand {
+  0%, 60% {
+    opacity: 0;
+    transform: translateX(0) translateY(0);
+  }
+  65% {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+  }
+  70% {
+    opacity: 1;
+    transform: translateX(-20px) translateY(-10px);
+  }
+  75% {
+    opacity: 0;
+    transform: translateX(-50px) translateY(-30px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50px) translateY(-30px);
+  }
+}
+
+.machine-produced-item.active {
+  animation: itemToHand var(--animation-duration) ease-in-out;
+}
+
+/* Responsive styles for different screen sizes */
+@media screen and (max-width: 768px) {
+  :root {
+    --animation-duration: 3.5s;
+    --machine-position-x: 120px;
+  }
+  
+  /* Modify animations for smaller screens */
+  @keyframes walkToMachine {
+    0% {
+      transform: translateX(var(--original-man-position)) translateY(0px);
+    }
+    10% {
+      transform: translateX(calc(var(--machine-position-x) * 0.2)) translateY(-2px);
+    }
+    20% {
+      transform: translateX(calc(var(--machine-position-x) * 0.4)) translateY(0px);
+    }
+    30% {
+      transform: translateX(calc(var(--machine-position-x) * 0.6)) translateY(-2px);
+    }
+    40%, 80% {
+      transform: translateX(var(--machine-position-x)) translateY(0px);
+    }
+    85% {
+      transform: translateX(calc(var(--machine-position-x) * 0.6)) translateY(-2px);
+    }
+    90% {
+      transform: translateX(calc(var(--machine-position-x) * 0.3)) translateY(0px);
+    }
+    100% {
+      transform: translateX(var(--original-man-position)) translateY(0px);
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  :root {
+    --animation-duration: 3s;
+    --machine-position-x: 90px;
+  }
+  
+  /* Scale down the machine-produced item for very small screens */
+  .machine-produced-item {
+    width: 15px;
+    height: 15px;
+  }
+}

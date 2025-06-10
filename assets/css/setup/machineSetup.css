@@ -1,0 +1,284 @@
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #F1F5F9;
+    color: #1E1E1E;
+    margin: 0;
+    padding: 0; /* Removing body padding */
+}
+
+/* Navbar styling copied from dashboard.css */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: white;
+    border-radius: 0 0 14px 14px;
+    box-shadow: 0 6px 14px rgba(30, 58, 138, 0.15);
+    display: flex;
+    align-items: center;
+    padding: 10px 24px;
+    z-index: 999;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.nav-left {
+    display: flex;
+    gap: 16px;
+    flex-grow: 1;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.nav-right {
+    display: flex;
+    gap: 16px;
+}
+
+nav button {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 10px 24px;
+    border: none;
+    border-radius: 10px;
+    background: #F1F5F9;
+    color: #1E3A8A;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(16, 185, 129, 0);
+}
+
+nav button:hover {
+    background: #10B981;
+    color: white;
+    box-shadow: 0 6px 12px rgba(16, 185, 129, 0.4);
+}
+
+nav button.active {
+    background: linear-gradient(135deg, #1E3A8A 0%, #10B981 100%);
+    color: white;
+    box-shadow: 0 8px 16px rgba(16, 185, 129, 0.6);
+}
+
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #1E3A8A;
+    padding: 5px;
+}
+
+@media (max-width: 1024px) {
+    .nav-left {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    nav button {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+    
+    .content, .form-card {
+        margin-top: 120px; /* Add space for the fixed navbar */
+        padding: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .mobile-menu-btn {
+        display: block;
+        order: -1;
+    }
+    
+    .nav-left {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 10px;
+    }
+    
+    .nav-left.show {
+        display: flex;
+    }
+    
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .nav-right {
+        position: absolute;
+        top: 10px;
+        right: 24px;
+    }
+    
+    .content, .form-card {
+        margin-top: 70px;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    nav button {
+        width: 100%;
+        text-align: left;
+    }
+    
+    .content, .form-card {
+        margin: 70px 10px 20px;
+    }
+    
+    .content p {
+        font-size: 1rem;
+    }
+}
+h1 {
+    font-family: 'Poppins', sans-serif;
+    color: #1E3A8A;
+    margin-bottom: 1rem;
+}
+.form-card {
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    padding: 2rem;
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+}
+input[type="text"], input[type="date"] {
+    width: 100%;
+    padding: 0.6rem;
+    border-radius: 0.5rem;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 2rem;
+}
+th, td {
+    padding: 0.6rem 0.5rem;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+    background: white;
+}
+#machine-table th:nth-child(1), #machine-table td:nth-child(1) { width: 15%; } /* Job No */
+#machine-table th:nth-child(2), #machine-table td:nth-child(2) { width: 15%; } /* Date */
+#machine-table th:nth-child(3), #machine-table td:nth-child(3) { width: 25%; } /* Machine Name */
+#machine-table th:nth-child(4), #machine-table td:nth-child(4) { width: 20%; } /* Machine Type */
+#machine-table th:nth-child(5), #machine-table td:nth-child(5) { width: 15%; } /* Other */
+#machine-table th:nth-child(6), #machine-table td:nth-child(6) { width: 10%; } /* Actions */
+th {
+    background: #f8fafc;
+    font-weight: 600;
+}
+td input[type="text"], td input[type="date"] {
+    margin-bottom: 0;
+    padding: 0.4rem;
+    width: calc(100% - 4px);
+    box-sizing: border-box;
+}
+#machine-table td:nth-child(2) input[type="date"] {
+    width: 130px !important;
+    min-width: 130px;
+    max-width: 130px;
+}
+.btn {
+    padding: 0.4rem 0.8rem;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+.btn-primary {
+    background-color: #1E3A8A;
+    color: white;
+}
+.btn-accent {
+    background-color: #10B981;
+    color: white;
+}
+.btn-small {
+    font-size: 0.8rem;
+    margin-left: 0.3rem;
+}
+.row-controls button {
+    margin: 0 0.25rem;
+}
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1061;
+}
+.modal-content {
+    background-color: white;
+    margin: 10% auto;
+    padding: 2rem;
+    border-radius: 1rem;
+    width: 80%;
+    max-width: 600px;
+    z-index: 1062;
+}
+.close {
+    float: right;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+.error {
+    color: #EF4444;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+/* Main content container with proper spacing to prevent navbar overlap */
+.content, .form-card {
+    margin-top: 80px; /* Matches dashboard.css top margin to clear the navbar */
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    padding: 2rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+}
+
+/* Responsive adjustments for content spacing - matching dashboard.css media queries */
+@media (max-width: 1024px) {
+    .content, .form-card {
+        margin-top: 120px;
+        padding: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .content, .form-card {
+        margin-top: 70px;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .content, .form-card {
+        margin: 70px 10px 20px;
+    }
+}

@@ -1,0 +1,841 @@
+/* CSS Man - A realistic human figure created with pure CSS */
+
+:root {
+  /* Color variables */
+  --skin-color: #e8beab;
+  --skin-shadow: #d5a390;
+  --skin-highlight: #f5d7c4;
+  --hair-color: #3a3a3a;
+  --shirt-color: #2c3e50;
+  --shirt-highlight: #3c536a;
+  --shirt-shadow: #1e2a36;
+  --pants-color: #34495e;
+  --pants-highlight: #435e79;
+  --pants-shadow: #263545;
+  --shoe-color: #2c2c2c;
+  --nail-color: #e8d7cc;
+  --toe-color: var(--skin-color);
+  
+  /* Size variables */
+  --head-size: 25px;
+  --body-width: 40px;
+  --body-height: 60px;
+  --arm-width: 12px;
+  --arm-height: 60px;
+  --leg-width: 15px;
+  --leg-height: 70px;
+  --shoe-width: 20px;
+  --shoe-height: 10px;
+  
+  /* Position variables */
+  --man-height: 230px;
+  --man-width: 100px;
+}
+
+/* Main container */
+.css-man {
+  position: relative;
+  height: var(--man-height);
+  width: var(--man-width);
+  display: flex;
+  justify-content: center;
+}
+
+.body-core {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Head */
+.css-man .head {
+  position: relative;
+  width: var(--head-size);
+  height: calc(var(--head-size) * 1.35);
+  background-color: var(--skin-color);
+  border-radius: 50% 50% 45% 45%;
+  z-index: 10;
+  box-shadow: inset -3px 3px 5px var(--skin-shadow);
+  overflow: hidden;
+}
+
+/* Realistic skin texture */
+.css-man .head::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 70% 20%, var(--skin-highlight) 0%, transparent 25%),
+    radial-gradient(circle at 30% 40%, var(--skin-highlight) 0%, transparent 20%),
+    linear-gradient(to bottom, transparent 70%, rgba(0,0,0,0.05) 100%);
+  opacity: 0.6;
+  z-index: 1;
+}
+
+/* Hair */
+.css-man .hair {
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  width: calc(var(--head-size) + 8px);
+  height: calc(var(--head-size) * 0.6);
+  background-color: var(--hair-color);
+  border-radius: 50% 50% 0 0;
+  z-index: 9;
+  box-shadow: 0 -2px 3px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+/* Hair texture */
+.css-man .hair::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.1) 50%, transparent 100%),
+    linear-gradient(to bottom, rgba(255,255,255,0.1) 0%, transparent 100%);
+  opacity: 0.8;
+}
+
+/* Face features */
+.css-man .eye-left,
+.css-man .eye-right,
+.css-man .eyebrow-left,
+.css-man .eyebrow-right,
+.css-man .mouth,
+.css-man .ear-left,
+.css-man .ear-right {
+  position: absolute;
+  z-index: 11;
+}
+
+.css-man .eye-left {
+  left: 25%;
+}
+
+.css-man .eye-right {
+  right: 25%;
+}
+
+.css-man .eye-left,
+.css-man .eye-right {
+  width: 5px;
+  height: 3px;
+  background-color: #fff;
+  border-radius: 50%;
+  top: 30%;
+}
+
+.css-man .eye-left::after,
+.css-man .eye-right::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background-color: #333;
+  border-radius: 50%;
+  top: 0.5px;
+  left: 1.5px;
+}
+
+/* Eyebrows */
+.css-man .eyebrow-left,
+.css-man .eyebrow-right {
+  position: absolute;
+  width: 5px;
+  height: 1px;
+  background-color: var(--hair-color);
+  top: 26%;
+  z-index: 11;
+}
+
+.css-man .eyebrow-left {
+  left: 25%;
+  transform: rotate(-10deg);
+}
+
+.css-man .eyebrow-right {
+  right: 25%;
+  transform: rotate(10deg);
+}
+
+.css-man .mouth {
+  position: absolute;
+  width: 8px;
+  height: 2px;
+  background-color: #c66;
+  border-radius: 2px;
+  bottom: 25%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 11;
+}
+
+.css-man .ear-left,
+.css-man .ear-right {
+  position: absolute;
+  width: 4px;
+  height: 8px;
+  background-color: var(--skin-color);
+  border-radius: 50%;
+  top: 40%;
+  z-index: 8;
+}
+
+.css-man .ear-left {
+  left: -2px;
+}
+
+.css-man .ear-right {
+  right: -2px;
+}
+
+/* Neck - properly connected to head and torso */
+.css-man .neck {
+  width: calc(var(--head-size) * 0.6);
+  height: 8px;
+  background-color: var(--skin-color);
+  border-radius: 5px 5px 0 0;
+  margin-top: -3px; /* Overlap with head */
+  position: relative;
+}
+
+/* Torso - connected to neck */
+.css-man .torso {
+  position: relative;
+  width: var(--body-width);
+  height: var(--body-height);
+  background-color: var(--shirt-color);
+  border-radius: 10px 10px 0 0;
+  margin-top: -2px; /* Overlap with neck */
+  z-index: 7;
+  box-shadow: inset -4px 4px 8px rgba(0, 0, 0, 0.2);
+  overflow: visible;
+}
+
+/* Shirt details */
+.css-man .torso::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(45deg, transparent 0%, transparent 40%, var(--shirt-highlight) 45%, transparent 50%, transparent 100%),
+    radial-gradient(circle at 70% 30%, var(--shirt-highlight) 0%, transparent 25%);
+  opacity: 0.3;
+  z-index: 1;
+}
+
+/* Shirt collar */
+.css-man .torso::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 15%;
+  background-color: var(--shirt-highlight);
+  border-radius: 10px 10px 0 0;
+  clip-path: polygon(
+    0 0, 100% 0, 100% 100%, 
+    65% 100%, 50% 60%, 35% 100%, 0 100%
+  );
+  z-index: 2;
+}
+
+/* Buttons */
+.css-man .button {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background-color: #ddd;
+  border-radius: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 8;
+  box-shadow: inset 0 0 2px rgba(0,0,0,0.3);
+}
+
+.css-man .button:nth-child(1) { top: 15px; }
+.css-man .button:nth-child(2) { top: 30px; }
+.css-man .button:nth-child(3) { top: 45px; }
+
+/* Hips - connection between torso and legs */
+.css-man .hips {
+  width: var(--body-width);
+  height: 5px;
+  background-color: var(--pants-color);
+  margin-top: -2px; /* Overlap with torso */
+  border-radius: 2px 2px 5px 5px;
+}
+
+/* Limbs container */
+.css-man .limbs {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+}
+
+/* Arms - connected to torso */
+.css-man .arm {
+  position: absolute;
+  top: calc(var(--head-size) * 1.35 + 8px); /* Position at shoulder level */
+  width: var(--arm-width);
+  height: var(--arm-height);
+  z-index: 6;
+}
+
+.css-man .arm-left {
+  left: calc(50% - var(--body-width) / 2 - var(--arm-width) + 2px);
+  transform-origin: top right;
+  transform: rotate(5deg);
+}
+
+.css-man .arm-right {
+  right: calc(50% - var(--body-width) / 2 - var(--arm-width) + 2px);
+  transform-origin: top left;
+  transform: rotate(-5deg);
+}
+
+/* Upper arm */
+.css-man .upper-arm {
+  width: 100%;
+  height: 45%;
+  background-color: var(--shirt-color);
+  border-radius: 5px 5px 2px 2px;
+  position: relative;
+}
+
+/* Elbow */
+.css-man .elbow {
+  width: 100%;
+  height: 10%;
+  background-color: var(--shirt-color);
+  position: relative;
+  margin-top: -1px; /* Connect to upper arm */
+}
+
+/* Forearm */
+.css-man .forearm {
+  width: 100%;
+  height: 35%;
+  background-color: var(--shirt-color);
+  border-radius: 2px 2px 3px 3px;
+  position: relative;
+  margin-top: -1px; /* Connect to elbow */
+}
+
+/* Wrist - connecting forearm to hand */
+.css-man .wrist {
+  width: 100%;
+  height: 5%;
+  background-color: var(--shirt-color);
+  border-radius: 0 0 5px 5px;
+  position: relative;
+  margin-top: -1px; /* Connect to forearm */
+}
+
+/* Hand - more realistic human hand */
+.css-man .hand {
+  width: 14px;
+  height: 16px;
+  background-color: var(--skin-color);
+  border-radius: 35% 35% 50% 50%;
+  box-shadow: 
+    inset -2px 2px 3px var(--skin-shadow),
+    inset 1px -1px 2px var(--skin-highlight);
+  position: relative;
+  margin-top: -1px; /* Connect to wrist */
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  transform: rotate(var(--hand-rotate, 0deg));
+}
+
+/* Palm lines */
+.css-man .hand::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background-color: var(--skin-color);
+  border-radius: 30% 30% 40% 40%;
+  z-index: -1;
+  background-image: 
+    radial-gradient(circle at 30% 30%, var(--skin-highlight) 0%, transparent 30%),
+    linear-gradient(to right, transparent 45%, rgba(0,0,0,0.05) 50%, transparent 55%),
+    linear-gradient(to bottom, transparent 55%, rgba(0,0,0,0.05) 60%, transparent 65%),
+    linear-gradient(45deg, transparent 40%, rgba(0,0,0,0.05) 45%, transparent 50%);
+}
+
+/* Hand back details */
+.css-man .hand::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 35% 35% 50% 50%;
+  background-image: 
+    linear-gradient(to bottom right, transparent 50%, rgba(0,0,0,0.05) 55%, transparent 60%),
+    linear-gradient(to bottom left, transparent 50%, rgba(0,0,0,0.05) 55%, transparent 60%),
+    linear-gradient(to bottom, transparent 75%, rgba(0,0,0,0.05) 85%, transparent 90%);
+  opacity: 0.7;
+}
+
+/* Thumb */
+.css-man .thumb {
+  position: absolute;
+  width: 4px;
+  height: 6px;
+  background-color: var(--skin-color);
+  border-radius: 40% 40% 30% 30%;
+  box-shadow: inset -1px 1px 2px rgba(0,0,0,0.1);
+  z-index: 1;
+}
+
+.css-man .arm-left .thumb {
+  left: -2px;
+  bottom: 3px;
+  transform: rotate(-30deg);
+  transform-origin: bottom left;
+}
+
+.css-man .arm-right .thumb {
+  right: -2px;
+  bottom: 3px;
+  transform: rotate(30deg);
+  transform-origin: bottom right;
+}
+
+/* Thumb joint */
+.css-man .thumb::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: rgba(0,0,0,0.1);
+  border-radius: 50%;
+}
+
+/* Fingers */
+.css-man .fingers {
+  position: absolute;
+  bottom: -5px;
+  width: 110%;
+  left: -5%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1px;
+}
+
+/* Create more natural hand shape with connected fingers */
+.css-man .finger {
+  width: 2.5px;
+  position: relative;
+  transform-origin: bottom center;
+  background-color: transparent;
+  box-shadow: none;
+}
+
+/* Individual finger styling */
+.css-man .finger::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--skin-color);
+  border-radius: 30% 30% 30% 30%;
+  box-shadow: inset -1px 1px 1px rgba(0,0,0,0.1);
+}
+
+/* Finger joints */
+.css-man .finger::after {
+  content: '';
+  position: absolute;
+  top: 35%;
+  left: 0;
+  width: 100%;
+  height: 30%;
+  background-image: 
+    linear-gradient(to bottom, transparent 30%, rgba(0,0,0,0.05) 50%, transparent 70%),
+    linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.05) 70%, transparent 80%);
+  border-radius: 30%;
+}
+
+/* Specific finger styling */
+.css-man .finger:nth-child(1) {
+  height: 7px;
+  transform: rotate(-5deg) translateY(-0.5px);
+}
+
+.css-man .finger:nth-child(2) {
+  height: 8px;
+  transform: rotate(-2deg);
+}
+
+.css-man .finger:nth-child(3) {
+  height: 7.5px;
+  transform: rotate(2deg);
+}
+
+.css-man .finger:nth-child(4) {
+  height: 6px;
+  transform: rotate(5deg) translateY(1px);
+}
+
+/* Fingernails */
+.css-man .nail {
+  position: absolute;
+  bottom: 0.5px;
+  left: 0;
+  width: 2px;
+  height: 2px;
+  background-color: var(--nail-color);
+  border-radius: 40% 40% 10% 10%;
+  border-bottom: 0.5px solid rgba(0,0,0,0.2);
+  box-shadow: 
+    inset 0 -0.5px 0 rgba(255,255,255,0.5),
+    inset 0 0.5px 0 rgba(0,0,0,0.05);
+}
+
+/* Hand positioning for left/right */
+.css-man .arm-left .hand {
+  --hand-rotate: -5deg;
+}
+
+.css-man .arm-right .hand {
+  --hand-rotate: 5deg;
+}
+
+/* Leg positioning */
+.css-man .leg {
+  position: absolute;
+  top: calc(var(--head-size) * 1.35 + 8px + var(--body-height) + 3px); /* Position at hip level */
+  width: var(--leg-width);
+  height: var(--leg-height);
+  z-index: 4;
+}
+
+.css-man .leg-left {
+  left: calc(50% - var(--leg-width) - 1px);
+}
+
+.css-man .leg-right {
+  right: calc(50% - var(--leg-width) - 1px);
+}
+
+/* Thigh */
+.css-man .thigh {
+  width: 100%;
+  height: 45%;
+  background-color: var(--pants-color);
+  border-radius: 5px 5px 2px 2px;
+  position: relative;
+}
+
+/* Knee */
+.css-man .knee {
+  width: 100%;
+  height: 10%;
+  background-color: var(--pants-color);
+  position: relative;
+  margin-top: -1px; /* Connect to thigh */
+}
+
+/* Calf */
+.css-man .calf {
+  width: 100%;
+  height: 35%;
+  background-color: var(--pants-color);
+  border-radius: 2px 2px 3px 3px;
+  position: relative;
+  margin-top: -1px; /* Connect to knee */
+}
+
+/* Ankle - connecting calf to foot */
+.css-man .ankle {
+  width: 100%;
+  height: 5%;
+  background-color: var(--pants-color);
+  border-radius: 0 0 5px 5px;
+  position: relative;
+  margin-top: -1px; /* Connect to calf */
+}
+
+/* Foot */
+.css-man .foot {
+  width: 100%;
+  height: var(--shoe-height);
+  position: relative;
+  margin-top: -1px; /* Connect to ankle */
+}
+
+/* Shoe */
+.css-man .shoe {
+  width: var(--shoe-width);
+  height: var(--shoe-height);
+  background-color: var(--shoe-color);
+  border-radius: 10px 10px 5px 5px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: inset 0 3px 3px rgba(255,255,255,0.1);
+}
+
+/* Shoe shine */
+.css-man .shoe::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 5px;
+  width: 10px;
+  height: 3px;
+  background-color: rgba(255,255,255,0.1);
+  border-radius: 50%;
+}
+
+/* Toes */
+.css-man .toes {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 3px;
+  display: flex;
+  justify-content: space-around;
+  padding: 0 2px;
+  z-index: 1;
+}
+
+.css-man .toe {
+  width: 2px;
+  height: 2px;
+  background-color: var(--toe-color);
+  border-radius: 50% 50% 0 0;
+  position: relative;
+  bottom: -1px;
+}
+
+/* Toenail */
+.css-man .toe::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1.5px;
+  height: 1px;
+  background-color: var(--nail-color);
+  border-radius: 1px 1px 0 0;
+  border-bottom: 0.5px solid rgba(0,0,0,0.2);
+}
+
+/* More natural finger animation */
+@keyframes fingerWiggle {
+  0%, 100% { 
+    transform: var(--finger-transform) scaleY(1); 
+  }
+  50% { 
+    transform: var(--finger-transform) scaleY(0.98) translateY(0.2px); 
+  }
+}
+
+.css-man .finger:nth-child(1) { 
+  --finger-transform: rotate(-5deg) translateY(-0.5px);
+  animation: fingerWiggle 7.1s infinite ease-in-out;
+}
+.css-man .finger:nth-child(2) { 
+  --finger-transform: rotate(-2deg);
+  animation: fingerWiggle 6.7s infinite ease-in-out;
+}
+.css-man .finger:nth-child(3) { 
+  --finger-transform: rotate(2deg);
+  animation: fingerWiggle 7.3s infinite ease-in-out;
+}
+.css-man .finger:nth-child(4) { 
+  --finger-transform: rotate(5deg) translateY(1px);
+  animation: fingerWiggle 6.9s infinite ease-in-out;
+}
+
+/* Shadow beneath the man */
+.css-man::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 10px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  filter: blur(4px);
+  z-index: 1;
+}
+
+/* Animations */
+@keyframes breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.01); }
+}
+
+.css-man .torso {
+  animation: breathe 4s infinite ease-in-out;
+}
+
+@keyframes headTilt {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(1deg); }
+  75% { transform: rotate(-1deg); }
+}
+
+.css-man .head {
+  animation: headTilt 5s infinite ease-in-out;
+}
+
+@keyframes armSway {
+  0%, 100% { transform: rotate(5deg); }
+  50% { transform: rotate(3deg); }
+}
+
+@keyframes armSwayReverse {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(-3deg); }
+}
+
+.css-man .arm-left {
+  animation: armSway 4s infinite ease-in-out;
+}
+
+.css-man .arm-right {
+  animation: armSwayReverse 4s infinite ease-in-out;
+}
+
+@keyframes blink {
+  0%, 95%, 100% { transform: scaleY(1); }
+  97% { transform: scaleY(0.1); }
+}
+
+.css-man .eye-left::after,
+.css-man .eye-right::after {
+  animation: blink 4s infinite ease-in-out;
+}
+
+/* Bone and joint structure styling */
+
+/* Thigh bone (femur) */
+.css-man .femur {
+  position: absolute;
+  width: 3px;
+  height: 90%;
+  background-color: rgba(255, 255, 255, 0.5);
+  left: calc(50% - 1.5px);
+  top: 0;
+  border-radius: 2px;
+  z-index: -1;
+}
+
+/* Thigh muscle */
+.css-man .thigh-muscle {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(to right, 
+      transparent 20%, 
+      rgba(255, 255, 255, 0.1) 30%, 
+      transparent 70%);
+  border-radius: 5px 5px 2px 2px;
+  z-index: -1;
+}
+
+/* Patella (kneecap) */
+.css-man .patella {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  left: calc(50% - 3px);
+  top: calc(50% - 3px);
+  z-index: 1;
+}
+
+/* Knee ligament */
+.css-man .knee-ligament {
+  position: absolute;
+  width: 80%;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.2);
+  left: 10%;
+  top: 50%;
+  z-index: 0;
+}
+
+/* Tibia (shin bone) */
+.css-man .tibia {
+  position: absolute;
+  width: 3px;
+  height: 95%;
+  background-color: rgba(255, 255, 255, 0.5);
+  left: calc(40% - 1.5px);
+  top: 0;
+  border-radius: 1px;
+  z-index: -1;
+}
+
+/* Fibula (outer lower leg bone) */
+.css-man .fibula {
+  position: absolute;
+  width: 2px;
+  height: 90%;
+  background-color: rgba(255, 255, 255, 0.4);
+  left: calc(65% - 1px);
+  top: 0;
+  border-radius: 1px;
+  z-index: -1;
+}
+
+/* Calf muscle */
+.css-man .calf-muscle {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(
+      ellipse at center, 
+      rgba(255, 255, 255, 0.15) 0%, 
+      transparent 70%
+    );
+  top: 10%;
+  z-index: -1;
+}
+
+/* Ankle joint capsule */
+.css-man .joint-capsule {
+  position: absolute;
+  width: 8px;
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 40% 40% 10% 10%;
+  left: calc(50% - 4px);
+  top: calc(50% - 2px);
+  z-index: 0;
+}

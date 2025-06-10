@@ -1,0 +1,575 @@
+/* Factory machine styling with extreme realism */
+.factory-machine {
+  position: absolute;
+  top: 30px; /* Restored to previous position */
+  right: 60px;
+  width: 220px;
+  height: 250px;
+  z-index: 5;
+}
+
+/* Main machine body */
+.machine-body {
+  position: relative;
+  width: 100%;
+  height: 85%;
+  background: linear-gradient(135deg, #2d3748 0%, #4a5568 50%, #2d3748 100%);
+  border-radius: 8px 8px 0 0;
+  box-shadow: 
+    inset 0 0 15px rgba(0, 0, 0, 0.6),
+    5px 5px 15px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+}
+
+/* Control panel with realistic buttons and displays */
+.machine-panel {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 80px;
+  height: 120px;
+  background: linear-gradient(to bottom, #1a202c, #2d3748);
+  border-radius: 5px;
+  padding: 8px;
+  box-shadow: 
+    inset 0 0 2px rgba(255, 255, 255, 0.1),
+    2px 2px 5px rgba(0, 0, 0, 0.3);
+  border: 1px solid #4a5568;
+}
+
+.control-lights {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.light {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+}
+
+.light-green {
+  background: radial-gradient(circle at 30% 30%, #48BB78, #276749);
+  box-shadow: 0 0 8px rgba(72, 187, 120, 0.6);
+}
+
+.light-yellow {
+  background: radial-gradient(circle at 30% 30%, #ECC94B, #975A16);
+}
+
+.light-red {
+  background: radial-gradient(circle at 30% 30%, #F56565, #9B2C2C);
+}
+
+.control-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 12px;
+}
+
+.button {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #718096, #4A5568);
+  border: 1px solid #2D3748;
+  box-shadow: 
+    inset 0 0 2px rgba(255, 255, 255, 0.2),
+    2px 2px 3px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  position: relative;
+}
+
+.button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4A5568, #2D3748);
+}
+
+.button-main {
+  background: linear-gradient(135deg, #E53E3E, #9B2C2C);
+  border: 1px solid #742A2A;
+}
+
+.display-screen {
+  width: 95%;
+  height: 40px;
+  background: #1A202C;
+  border-radius: 3px;
+  margin: 0 auto;
+  border: 1px solid #4A5568;
+  overflow: hidden;
+  position: relative;
+}
+
+.screen-content {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  right: 5px;
+  bottom: 5px;
+  background: linear-gradient(0deg, #234E52, #285E61);
+  opacity: 0.8;
+  font-family: monospace;
+  font-size: 8px;
+  color: #E6FFFA;
+  padding: 2px;
+  overflow: hidden;
+}
+
+.screen-content::before {
+  content: '>RUN...';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+}
+
+.screen-content::after {
+  content: '<<PROD_A>>';
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+}
+
+/* Moving parts and components with realism */
+.machine-components {
+  position: absolute;
+  top: 20px;
+  left: 15px;
+  width: 100px;
+  height: 110px;
+  overflow: hidden;
+}
+
+.gears {
+  position: absolute;
+  top: 10px;
+  left: 5px;
+  width: 90px;
+  height: 90px;
+}
+
+.gear {
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #718096, #4A5568);
+  box-shadow: 
+    inset 0 0 5px rgba(0, 0, 0, 0.5),
+    2px 2px 5px rgba(0, 0, 0, 0.3);
+  z-index: 2;
+}
+
+.gear::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30%;
+  height: 30%;
+  border-radius: 50%;
+  background: #2D3748;
+  border: 2px solid #1A202C;
+}
+
+.gear-large {
+  width: 50px;
+  height: 50px;
+  top: 0;
+  left: 0;
+  animation: rotateGear 10s linear infinite;
+}
+
+.gear-medium {
+  width: 35px;
+  height: 35px;
+  top: 10px;
+  left: 45px;
+  animation: rotateGearReverse 7s linear infinite;
+}
+
+.gear-small {
+  width: 20px;
+  height: 20px;
+  top: 50px;
+  left: 30px;
+  animation: rotateGear 5s linear infinite;
+}
+
+@keyframes rotateGear {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes rotateGearReverse {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(-360deg); }
+}
+
+.pistons {
+  position: absolute;
+  bottom: 0;
+  left: 15px;
+  width: 70px;
+  height: 40px;
+}
+
+.piston {
+  position: absolute;
+  width: 25px;
+  height: 40px;
+  bottom: 0;
+}
+
+.piston-left {
+  left: 0;
+}
+
+.piston-right {
+  right: 0;
+}
+
+.piston-rod {
+  position: absolute;
+  width: 5px;
+  height: 100%;
+  background: linear-gradient(to right, #A0AEC0, #CBD5E0, #A0AEC0);
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.piston-head {
+  position: absolute;
+  width: 15px;
+  height: 8px;
+  background: linear-gradient(to bottom, #E2E8F0, #A0AEC0);
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  border-radius: 3px;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
+}
+
+.piston-left .piston-head {
+  animation: pistonMove 1.2s ease-in-out infinite;
+}
+
+.piston-right .piston-head {
+  animation: pistonMove 1.2s ease-in-out infinite 0.6s;
+}
+
+@keyframes pistonMove {
+  0%, 100% { top: 0; }
+  50% { top: 20px; }
+}
+
+/* Conveyor belt with moving parts */
+.conveyor {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background: #2D3748;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+.conveyor-belt {
+  position: absolute;
+  width: 100%;
+  height: 20px;
+  bottom: 15px;
+  background: #4A5568;
+  overflow: hidden;
+}
+
+.belt-section {
+  position: absolute;
+  width: 20%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    rgba(0, 0, 0, 0.1) 0%, 
+    rgba(0, 0, 0, 0.2) 50%, 
+    rgba(0, 0, 0, 0.1) 100%);
+  border-right: 2px solid #2D3748;
+  box-sizing: border-box;
+  animation: moveBelt 2s linear infinite;
+}
+
+.belt-section:nth-child(1) { left: 0%; }
+.belt-section:nth-child(2) { left: 20%; }
+.belt-section:nth-child(3) { left: 40%; }
+.belt-section:nth-child(4) { left: 60%; }
+.belt-section:nth-child(5) { left: 80%; }
+
+@keyframes moveBelt {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(100%); }
+}
+
+.product-output {
+  position: absolute;
+  right: 20px;
+  bottom: 25px;
+  width: 30px;
+  height: 20px;
+}
+
+.product-item {
+  position: absolute;
+  width: 0;
+  height: 0;
+  right: 0;
+  bottom: 5px;
+  opacity: 0;
+}
+
+/* Machine housing details for realism */
+.machine-housing {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.panel-seams {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(90deg, transparent 48%, rgba(0, 0, 0, 0.1) 49%, rgba(0, 0, 0, 0.1) 51%, transparent 52%),
+    linear-gradient(0deg, transparent 48%, rgba(0, 0, 0, 0.1) 49%, rgba(0, 0, 0, 0.1) 51%, transparent 52%);
+  background-size: 100px 100px;
+  opacity: 0.7;
+}
+
+.vents {
+  position: absolute;
+  bottom: 60px;
+  left: 15px;
+  width: 60px;
+  height: 20px;
+}
+
+.vent {
+  position: absolute;
+  height: 3px;
+  background: #1A202C;
+  border-radius: 1px;
+  box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.8);
+}
+
+.vent-1 {
+  width: 60px;
+  top: 0;
+}
+
+.vent-2 {
+  width: 60px;
+  top: 8px;
+}
+
+.vent-3 {
+  width: 60px;
+  top: 16px;
+}
+
+.rivets {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.rivet {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: radial-gradient(circle at 30% 30%, #A0AEC0, #718096);
+  border-radius: 50%;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+.rivet-1 { top: 15px; left: 15px; }
+.rivet-2 { top: 15px; right: 15px; }
+.rivet-3 { bottom: 55px; left: 15px; }
+.rivet-4 { bottom: 55px; right: 15px; }
+
+/* Machine base/stand */
+.machine-base {
+  position: relative;
+  width: 100%;
+  height: 15%;
+  background: linear-gradient(to bottom, #4A5568, #2D3748);
+  border-radius: 0 0 5px 5px;
+  overflow: hidden;
+}
+
+.support-legs {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.leg {
+  position: absolute;
+  bottom: 0;
+  width: 10px;
+  height: 100%;
+  background: linear-gradient(to right, #1A202C, #2D3748, #1A202C);
+  border-radius: 0 0 2px 2px;
+}
+
+.leg-1 { left: 15%; }
+.leg-2 { left: 38%; }
+.leg-3 { right: 38%; }
+.leg-4 { right: 15%; }
+
+/* Working lights and effects */
+.light-green {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 8px rgba(72, 187, 120, 0.6); }
+  50% { box-shadow: 0 0 15px rgba(72, 187, 120, 0.8); }
+}
+
+/* Product coming out animation */
+@keyframes produceItem {
+  0% { 
+    width: 0; 
+    height: 0; 
+    opacity: 0; 
+    right: 15px;
+  }
+  20% { 
+    width: 20px; 
+    height: 15px; 
+    opacity: 1; 
+    background-color: #C53030;
+    right: 15px;
+  }
+  80% {
+    width: 20px; 
+    height: 15px; 
+    opacity: 1;
+    background-color: #C53030;
+    right: -5px;
+  }
+  100% { 
+    width: 20px; 
+    height: 15px; 
+    opacity: 0;
+    background-color: #C53030;
+    right: -25px;
+  }
+}
+
+.product-item.active {
+  animation: produceItem 2s ease-in-out;
+  background-color: #C53030;
+  border-radius: 2px;
+}
+
+/* Responsive styles for different screen sizes */
+@media screen and (max-width: 992px) {
+  .factory-machine {
+    right: 40px;
+    width: 200px;
+    height: 230px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .factory-machine {
+    position: relative;
+    top: 0;
+    right: 0;
+    margin: 0 auto;
+  }
+  
+  /* Adjust machine components for better visibility on smaller screens */
+  .control-lights {
+    justify-content: space-around;
+  }
+  
+  .light {
+    width: 10px;
+    height: 10px;
+  }
+  
+  .button {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .button::after {
+    width: 9px;
+    height: 9px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .factory-machine {
+    width: 180px;
+    height: 210px;
+  }
+  
+  .machine-panel {
+    width: 70px;
+    height: 110px;
+  }
+  
+  .display-screen {
+    height: 35px;
+  }
+  
+  /* Simplify some animations to improve performance on mobile */
+  .panel-seams {
+    opacity: 0.5;
+  }
+  
+  .gear-small {
+    display: none; /* Hide smallest gear on mobile for better performance */
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .factory-machine {
+    width: 160px;
+    height: 190px;
+  }
+  
+  .control-buttons {
+    margin-bottom: 8px;
+  }
+  
+  .conveyor {
+    height: 40px;
+  }
+  
+  .vents {
+    bottom: 50px;
+    width: 50px;
+  }
+  
+  .vent-1, .vent-2, .vent-3 {
+    width: 50px;
+  }
+}
