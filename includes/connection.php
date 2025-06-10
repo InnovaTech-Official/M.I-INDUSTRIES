@@ -1,9 +1,10 @@
 <?php
-$host = 'localhost';      // or your server IP
-$port = '5432';           // default PostgreSQL port
-$dbname = 'azizabad';        // your database name
-$user = 'postgres';  // your PostgreSQL username
-$password = 'root';  // your PostgreSQL password
+class DATABASE
+    $host = 'localhost';      // or your server IP
+    $port = '5432';           // default PostgreSQL port
+    $dbname = 'azizabad';        // your database name
+    $user = 'postgres';  // your PostgreSQL username
+    $password = 'root';  // your PostgreSQL password
 
 try {
     $dsn = "pgsql:host=$host;port=$port;dbname=$dbname;";
